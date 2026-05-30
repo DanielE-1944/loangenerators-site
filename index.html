@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>LoanGenerators – Simulate Any Loan Instantly</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,700;1,700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  /* mapped from colors.xml */
+  --green:#039BE5;        /* light_blue_600 */
+  --green-dark:#01579B;   /* light_blue_900 */
+  --green-light:#40C4FF;  /* light_blue_A200 */
+  --amber:#00B0FF;        /* light_blue_A400 */
+
+  --navy:#0b1f3a;--slate:#3d5166;--muted:#6b7f95;
+  --border:#dde5ed;--bg:#f4f7fa;--white:#ffffff;
+}
+body{font-family:'Plus Jakarta Sans',sans-serif;color:var(--navy);background:var(--white);font-size:15px;line-height:1.6}
+
+/* NAV */
+nav{display:flex;align-items:center;justify-content:space-between;padding:0 44px;height:66px;border-bottom:1px solid var(--border);background:var(--white);position:sticky;top:0;z-index:100}
+.logo{display:flex;align-items:center;gap:8px}
+.logo-icon{width:32px;height:32px;background:var(--green);border-radius:8px;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:14px}
+.logo-text{font-family:'Fraunces',serif;font-size:20px;color:var(--navy);letter-spacing:-0.3px}
+.logo-text span{color:var(--green)}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{text-decoration:none;color:var(--muted);font-size:14px;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--navy)}
+.nav-cta{background:var(--green);color:white;border:none;padding:9px 20px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;transition:background .2s;display:inline-flex;align-items:center;gap:8px;text-decoration:none}
+.nav-cta:hover{background:var(--green-dark)}
+
+/* HERO */
+.hero{display:flex;align-items:center;justify-content:space-between;padding:72px 44px 60px;gap:40px;background:linear-gradient(135deg,#e8f6ff 0%,#f4f7fa 60%,var(--white) 100%)}
+.hero-text{max-width:520px}
+.badge{display:inline-flex;align-items:center;gap:6px;background:var(--green-light);color:var(--green-dark);font-size:12px;font-weight:700;padding:5px 12px;border-radius:999px;margin-bottom:18px;letter-spacing:0.3px;text-transform:uppercase}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:var(--green);display:inline-block}
+h1{font-family:'Fraunces',serif;font-size:46px;line-height:1.1;color:var(--navy);letter-spacing:-1px;margin-bottom:18px}
+h1 em{font-style:italic;color:var(--green)}
+.hero p{font-size:16.5px;color:var(--slate);line-height:1.7;margin-bottom:30px}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.play-btn{display:inline-flex;align-items:center;gap:10px;background:var(--navy);color:white;text-decoration:none;padding:12px 20px;border-radius:10px;transition:background .2s}
+.play-btn:hover{background:#162d4a}
+.play-btn-text{display:flex;flex-direction:column;line-height:1.2}
+.play-btn-text small{font-size:10px;opacity:.75;font-weight:400;letter-spacing:0.5px;text-transform:uppercase}
+.play-btn-text strong{font-size:15px;font-weight:600}
+.btn-outline{background:transparent;color:var(--navy);border:1.5px solid var(--border);padding:11px 22px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;transition:all .2s;text-decoration:none;display:inline-flex;align-items:center}
+.btn-outline:hover{border-color:var(--navy)}
+
+
+/* APP SCREENS */
+.hero-app-showcase{
+  display:flex;
+  gap:22px;
+  align-items:center;
+  justify-content:center;
+  flex-wrap:nowrap;
+  width:100%;
+  max-width:980px;
+  margin:auto;
+}
+
+.app-phone{
+  width:240px;
+  min-width:240px;
+  background:var(--navy);
+  border-radius:32px;
+  padding:9px;
+  box-shadow:0 20px 50px rgba(11,31,58,.18);
+  transition:transform .25s;
+  display:flex;
+  flex-direction:column;
+}
+
+.app-phone:hover{
+  transform:translateY(-6px);
+}
+
+.app-phone.center{
+  width:240px;
+  min-width:240px;
+  transform:none;
+}
+
+.app-phone-screen{
+  background:white;
+  border-radius:24px;
+  overflow:hidden;
+  min-height:520px;
+  display:flex;
+  flex-direction:column;
+}
+
+.screen-content{
+  padding:14px;
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-start;
+}
+.app-phone-screen{
+  background:white;
+  border-radius:24px;
+  overflow:hidden;
+  min-height:470px;
+}
+.screen-top{
+  background:linear-gradient(135deg,var(--green),var(--green-dark));
+  color:white;
+  padding:16px;
+}
+.screen-title{
+  font-family:'Fraunces',serif;
+  font-size:18px;
+  margin-top:4px;
+}
+.screen-content{padding:14px}
+.loan-card{
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:12px;
+  margin-bottom:12px;
+}
+.loan-card h4{
+  font-size:13px;
+  margin-bottom:6px;
+}
+.loan-value{
+  font-family:'Fraunces',serif;
+  font-size:24px;
+  color:var(--green-dark);
+}
+.chart-box{
+  height:140px;
+  border-radius:12px;
+  background:linear-gradient(180deg,#e8f6ff,#ffffff);
+  position:relative;
+  overflow:hidden;
+  margin-top:10px;
+}
+.chart-line1,.chart-line2{
+  position:absolute;
+  border-radius:20px;
+  height:4px;
+}
+.chart-line1{
+  width:150px;
+  background:var(--green);
+  top:70px;
+  left:18px;
+  transform:rotate(-12deg);
+}
+.chart-line2{
+  width:120px;
+  background:#00B0FF;
+  top:90px;
+  left:40px;
+  transform:rotate(-24deg);
+}
+.compare-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:10px 0;
+  border-bottom:1px solid var(--border);
+  font-size:12px;
+}
+.compare-row:last-child{border-bottom:none}
+.badge-win{
+  background:#dcfce7;
+  color:#166534;
+  font-size:10px;
+  padding:4px 8px;
+  border-radius:999px;
+  font-weight:700;
+}
+
+/* PHONE MOCKUP */
+.hero-phone{flex-shrink:0;width:260px}
+.phone-frame{background:var(--navy);border-radius:36px;padding:10px;box-shadow:0 24px 60px rgba(11,31,58,.18)}
+.phone-screen{background:white;border-radius:28px;overflow:hidden}
+.phone-header{background:var(--green);padding:16px;text-align:center;color:white}
+.phone-header p{font-size:11px;opacity:.8;margin-bottom:2px}
+.phone-header h3{font-family:'Fraunces',serif;font-size:17px;font-weight:700}
+.phone-body{padding:14px}
+.input-row{margin-bottom:10px}
+.input-label{font-size:10px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+.input-field{background:var(--bg);border:1px solid var(--border);border-radius:7px;padding:8px 10px;font-size:13px;font-weight:600;color:var(--navy);width:100%}
+.slider-bar{height:4px;background:var(--border);border-radius:2px;position:relative;margin-top:4px}
+.slider-fill{height:100%;background:var(--green);border-radius:2px;width:60%}
+.slider-thumb{width:14px;height:14px;border-radius:50%;background:var(--green);border:2px solid white;box-shadow:0 1px 4px rgba(0,0,0,.2);position:absolute;top:-5px;left:calc(60% - 7px)}
+.result-box{background:var(--green-light);border-radius:10px;padding:12px;margin-top:10px;text-align:center}
+.result-label{font-size:10px;color:var(--green-dark);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px}
+.result-amount{font-family:'Fraunces',serif;font-size:26px;color:var(--green-dark);font-weight:700}
+.result-sub{font-size:10px;color:var(--muted);margin-top:2px}
+.mini-schedule{margin-top:10px}
+.sched-row{display:flex;justify-content:space-between;font-size:11px;padding:4px 0;border-bottom:1px solid var(--border);color:var(--slate)}
+.sched-row:last-child{border:none}
+.sched-row span:last-child{font-weight:600;color:var(--navy)}
+
+/* LOGOS */
+.logos{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:24px 44px;text-align:center}
+.logos p{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:16px;font-weight:700}
+.logo-row{display:flex;align-items:center;justify-content:center;gap:36px;flex-wrap:wrap}
+.logo-item{font-family:'Fraunces',serif;font-size:15px;color:var(--border)}
+
+/* SECTIONS */
+.section{padding:68px 44px}
+.section-label{font-size:11px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:8px}
+h2{font-family:'Fraunces',serif;font-size:34px;color:var(--navy);letter-spacing:-.5px;margin-bottom:10px;line-height:1.2}
+.section-sub{font-size:15.5px;color:var(--slate);max-width:500px;line-height:1.65;margin-bottom:44px}
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.feature-card{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:22px;transition:border-color .2s,transform .2s;cursor:default}
+.feature-card:hover{border-color:var(--green);transform:translateY(-2px)}
+.feature-icon{width:42px;height:42px;background:var(--green-light);border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;font-size:20px}
+.feature-card h3{font-size:14.5px;font-weight:700;color:var(--navy);margin-bottom:7px}
+.feature-card p{font-size:13px;color:var(--muted);line-height:1.6}
+
+/* SCHEDULE SECTION */
+.schedule-section{background:var(--bg)}
+.schedule-demo{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:28px;max-width:600px}
+.demo-table{width:100%;border-collapse:collapse;font-size:13px}
+.demo-table th{font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);font-weight:600;text-align:left;padding:8px 10px;border-bottom:1.5px solid var(--border)}
+.demo-table td{padding:9px 10px;border-bottom:1px solid var(--border);color:var(--navy)}
+.demo-table tr:last-child td{border:none}
+.demo-table tr:nth-child(even) td{background:#fafcff}
+.pill{display:inline-block;font-size:11px;padding:2px 8px;border-radius:999px;font-weight:600}
+.pill.green{background:var(--green-light);color:var(--green-dark)}
+.pill.amber{background:#fef3c7;color:#92400e}
+
+/* APP DOWNLOAD SECTION */
+.app-section{background:var(--navy);padding:68px 44px;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.app-text h2{color:white;font-family:'Fraunces',serif;font-size:36px;margin-bottom:10px;letter-spacing:-.5px}
+.app-text p{color:#8ba0b8;font-size:15px;line-height:1.65;max-width:420px;margin-bottom:28px}
+.play-btn-lg{display:inline-flex;align-items:center;gap:12px;background:white;color:var(--navy);text-decoration:none;padding:14px 22px;border-radius:12px;transition:background .2s}
+.play-btn-lg:hover{background:var(--green-light)}
+.app-stats{display:flex;flex-wrap:wrap;gap:14px}
+.app-stat{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:18px 24px;text-align:center;min-width:120px}
+.app-stat-num{font-family:'Fraunces',serif;font-size:28px;color:white;font-weight:700}
+.app-stat-lbl{font-size:12px;color:#8ba0b8;margin-top:2px}
+
+/* TESTIMONIALS */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.testi-card{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:20px}
+.stars{color:var(--amber);font-size:13px;margin-bottom:10px}
+.testi-card blockquote{font-size:13px;color:var(--slate);line-height:1.65;margin-bottom:14px;font-style:italic}
+.testi-author{display:flex;align-items:center;gap:8px}
+.testi-avatar{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:white;flex-shrink:0}
+.testi-name{font-size:13px;font-weight:700;color:var(--navy)}
+.testi-role{font-size:11px;color:var(--muted)}
+
+/* CTA BANNER */
+.cta-banner{background:var(--green);padding:60px 44px;text-align:center}
+.cta-banner h2{color:white;font-family:'Fraunces',serif;font-size:34px;margin-bottom:10px}
+.cta-banner p{color:rgba(255,255,255,.85);font-size:15.5px;margin-bottom:26px}
+.cta-play-btn{display:inline-flex;align-items:center;gap:10px;background:white;color:var(--navy);text-decoration:none;padding:13px 22px;border-radius:10px;transition:background .2s}
+.cta-play-btn:hover{background:var(--green-light)}
+
+/* FOOTER */
+footer{padding:36px 44px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.footer-logo{display:flex;align-items:center;gap:7px}
+.footer-links{display:flex;gap:18px}
+.footer-links a{text-decoration:none;color:var(--muted);font-size:13px;transition:color .2s}
+.footer-links a:hover{color:var(--navy)}
+footer p{font-size:12px;color:var(--muted)}
+
+@media(max-width:768px){
+  nav{padding:0 20px}
+  .nav-links{display:none}
+  .hero{flex-direction:column;padding:40px 20px}
+  .hero-phone{width:220px;margin:0 auto}
+  .hero-app-showcase{
+    flex-wrap:wrap;
+    gap:16px;
+  }
+  .app-phone,
+  .app-phone.center{
+    width:220px;
+    min-width:220px;
+  }
+  .feature-grid,.testi-grid{grid-template-columns:1fr}
+  .section{padding:48px 20px}
+  .logos{padding:20px}
+  .app-section{padding:48px 20px;flex-direction:column}
+  .cta-banner{padding:48px 20px}
+  footer{padding:24px 20px;flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">
+    <div class="logo-icon">LG</div>
+    <div class="logo-text">Loan<span>Generators</span></div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#schedule">Calculator</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#download">Download</a></li>
+  </ul>
+  <a href="https://play.google.com/store/apps/details?id=com.loan.generator" target="_blank" class="nav-cta">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M3 20.5v-17l18 8.5-18 8.5zm2-3.5 11.5-5L5 7v10z"/></svg>
+    Get the App
+  </a>
+</nav>
+
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="badge"><span class="badge-dot"></span>Free on Google Play</div>
+    <h1>Advanced loan analysis for <em>real decisions</em></h1>
+    <p>LoanGenerators now showcases the real Android experience — including loan simulation, break-even analytics, and side-by-side loan comparison screens directly inspired by the Play Store app.</p>
+    <div class="hero-btns">
+      <a href="https://play.google.com/store/apps/details?id=com.loan.generator" target="_blank" class="play-btn">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M3 20.5v-17l18 8.5-18 8.5zm2-3.5 11.5-5L5 7v10z"/></svg>
+        <div class="play-btn-text">
+          <small>Download on</small>
+          <strong>Google Play</strong>
+        </div>
+      </a>
+      <a href="#features" class="btn-outline">Explore Features</a>
+    </div>
+  </div>
+
+  <div class="hero-app-showcase">
+
+    <!-- SCREEN 1 -->
+    <div class="app-phone">
+      <div class="app-phone-screen">
+        <div class="screen-top">
+          <div style="font-size:11px;opacity:.8">LoanGenerators</div>
+          <div class="screen-title">Loan Simulator</div>
+        </div>
+
+        <div class="screen-content">
+          <div class="loan-card">
+            <h4>Mortgage Amount</h4>
+            <div class="loan-value">$1,000,000</div>
+          </div>
+
+          <div class="loan-card">
+            <h4>Interest Rate</h4>
+            <div style="font-size:22px;font-weight:700;color:var(--navy)">4.2%</div>
+          </div>
+
+          <div class="loan-card">
+            <h4>Monthly Payment</h4>
+            <div class="loan-value">$6,165</div>
+          </div>
+
+          <div class="mini-schedule">
+            <div class="sched-row"><span>Principal</span><span>$3,550</span></div>
+            <div class="sched-row"><span>Interest</span><span>$2,615</span></div>
+            <div class="sched-row"><span>Loan Term</span><span>7 Years</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCREEN 2 -->
+    <div class="app-phone center">
+      <div class="app-phone-screen">
+        <div class="screen-top">
+          <div style="font-size:11px;opacity:.8">Analytics</div>
+          <div class="screen-title">Break-Even Chart</div>
+        </div>
+
+        <div class="screen-content">
+          <div class="loan-card">
+            <h4>Break-even reached</h4>
+            <div class="loan-value">Year 7</div>
+            <div style="font-size:12px;color:var(--muted)">Principal paid becomes higher than interest</div>
+          </div>
+
+          <div class="chart-box">
+            <div class="chart-line1"></div>
+            <div class="chart-line2"></div>
+          </div>
+
+          <div class="mini-schedule">
+            <div class="sched-row"><span>Total Principal</span><span>$640K</span></div>
+            <div class="sched-row"><span>Total Interest</span><span>$210K</span></div>
+            <div class="sched-row"><span>Balance Left</span><span>$743K</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCREEN 3 -->
+    <div class="app-phone">
+      <div class="app-phone-screen">
+        <div class="screen-top">
+          <div style="font-size:11px;opacity:.8">Comparison</div>
+          <div class="screen-title">Loan Comparison</div>
+        </div>
+
+        <div class="screen-content">
+
+          <div class="compare-row">
+            <div>
+              <strong>Bank A</strong><br/>
+              <span style="color:var(--muted)">4.2% fixed</span>
+            </div>
+            <div class="badge-win">Best Deal</div>
+          </div>
+
+          <div class="compare-row">
+            <div>
+              <strong>Bank B</strong><br/>
+              <span style="color:var(--muted)">5.5% variable</span>
+            </div>
+            <strong>$61K more</strong>
+          </div>
+
+          <div class="compare-row">
+            <div>
+              <strong>Bank C</strong><br/>
+              <span style="color:var(--muted)">part at 4,2% fixed interest and part at variable rate</span>
+            </div>
+            <strong>$45K more</strong>
+          </div>
+
+          <div class="loan-card" style="margin-top:14px">
+            <h4>Estimated Savings</h4>
+            <div class="loan-value">$45,000</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- LOGOS -->
+<div class="logos">
+  <p>Trusted by borrowers in 40+ countries</p>
+  <div class="logo-row">
+    <span class="logo-item">FinanceHub</span>
+    <span class="logo-item">CreditWise</span>
+    <span class="logo-item">LoanPro</span>
+    <span class="logo-item">BankSync</span>
+    <span class="logo-item">MoneyMap</span>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="section" id="features">
+  <div class="section-label">Why LoanGenerators</div>
+  <h2>Every loan, modelled in seconds</h2>
+  <p class="section-sub">Whether it's a mortgage, car loan, or personal credit — LoanGenerators gives you complete visibility before you sign anything.</p>
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="feature-icon">📊</div>
+      <h3>Real-time simulation</h3>
+      <p>Adjust loan amount, interest rate, and term on the fly and see your payments update instantly as you go.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📅</div>
+      <h3>Full payment schedule</h3>
+      <p>See a breakdown of every payment — principal, interest, and remaining balance — across the entire loan term.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔁</div>
+      <h3>Compare loan options</h3>
+      <p>Run multiple loan scenarios side by side to find the deal that saves you the most over the long run.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">💡</div>
+      <h3>Smart insights</h3>
+      <p>Understand exactly how much interest you'll pay and when, so you can plan early repayments wisely.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📤</div>
+      <h3>Export &amp; share</h3>
+      <p>Export your loan schedule as a PDF or share it directly with your bank, broker, or financial advisor.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔒</div>
+      <h3>Private &amp; secure</h3>
+      <p>No account required. Your loan data stays on your device — we never store or share your financial details.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE DEMO -->
+<section class="section schedule-section" id="schedule">
+  <div class="section-label">Payment Schedule</div>
+  <h2>See exactly where your money goes</h2>
+  <p class="section-sub" style="margin-bottom:32px">Here's a sample amortization table for a $1000,000 loan at 4.2% APR over 12 months.</p>
+  <div class="schedule-demo">
+    <table class="demo-table">
+      <thead>
+        <tr>
+          <th>Month</th>
+          <th>Payment</th>
+          <th>Principal</th>
+          <th>Interest</th>
+          <th>Balance</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>$6165.71</td><td>$2665.71</td><td>$3500.00</td><td>$997,334.29</td><td><span class="pill green">On track</span></td></tr>
+        <tr><td>2</td><td>$6165.71</td><td>$2675.04</td><td>$3490.67</td><td>$994,659.26</td><td><span class="pill green">On track</span></td></tr>
+        <tr><td>3</td><td>$6165.71</td><td>$2684.40</td><td>$3481.31</td><td>$991,974.86</td><td><span class="pill green">On track</span></td></tr>
+        <tr><td>6</td><td>$$6165.71</td><td>$2722.18</td><td>$3443.53</td><td>$981,142.97</td><td><span class="pill amber">Upcoming</span></td></tr>
+        <tr><td>12</td><td>$6165.71</td><td>$2779.85</td><td>$3385.86</td><td>$964,608.64</td><td><span class="pill amber">Upcoming</span></td></tr>
+        <tr><td>240</td><td>$6165.71</td><td>$6144.20</td><td>$21.50</td><td>$0.00</td><td><span class="pill amber">Upcoming</span></td></tr>
+
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- APP DOWNLOAD SECTION -->
+<section class="app-section" id="download">
+  <div class="app-text">
+    <h2>Get LoanGenerators free on Android</h2>
+    <p>Download the app from Google Play and start simulating your loan contracts in seconds. No sign-up, no fees, no data shared.</p>
+    <div>
+      <a href="https://play.google.com/store/apps/details?id=com.loan.generator" target="_blank" class="play-btn-lg">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="#039BE5"><path d="M3 20.5v-17l18 8.5-18 8.5zm2-3.5 11.5-5L5 7v10z"/></svg>
+        <div class="play-btn-text">
+          <small style="font-size:10px;color:#6b7f95;text-transform:uppercase;letter-spacing:.5px;font-weight:400">Get it on</small>
+          <strong style="font-size:16px;color:var(--navy)">Google Play</strong>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="app-stats">
+    <div class="app-stat"><div class="app-stat-num">4.8★</div><div class="app-stat-lbl">Play Store rating</div></div>
+    <div class="app-stat"><div class="app-stat-num">Free</div><div class="app-stat-lbl">No hidden costs</div></div>
+    <div class="app-stat"><div class="app-stat-num">36+</div><div class="app-stat-lbl">Loan types</div></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section" id="reviews">
+  <div class="section-label">User reviews</div>
+  <h2>Loved by borrowers worldwide</h2>
+  <p class="section-sub" style="margin-bottom:36px">Here's what users say about the app on Google Play.</p>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <blockquote>"Finally an app that shows me the full payment schedule before I commit. Saved me thousands on my car loan."</blockquote>
+      <div class="testi-author">
+        <div class="testi-avatar" style="background:#039BE5">JM</div>
+        <div><div class="testi-name">James M.</div><div class="testi-role">Verified Play Store review</div></div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <blockquote>"Super clean UI. I ran 10 different loan simulations in 5 minutes and picked the best deal. Highly recommend."</blockquote>
+      <div class="testi-author">
+        <div class="testi-avatar" style="background:#01579B">SR</div>
+        <div><div class="testi-name">Sofia R.</div><div class="testi-role">Verified Play Store review</div></div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★★★★★</div>
+      <blockquote>"As a financial advisor I recommend this to all my clients. It makes loan comparison incredibly transparent."</blockquote>
+      <div class="testi-author">
+        <div class="testi-avatar" style="background:#00B0FF">DP</div>
+        <div><div class="testi-name">David P.</div><div class="testi-role">Verified Play Store review</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <h2>Ready to simulate your loan?</h2>
+  <p>Download for free on Android and take control of your financial decisions.</p>
+  <a href="https://play.google.com/store/apps/details?id=com.loan.generator" target="_blank" class="cta-play-btn">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="var(--navy)"><path d="M3 20.5v-17l18 8.5-18 8.5zm2-3.5 11.5-5L5 7v10z"/></svg>
+    <div class="play-btn-text" style="color:var(--navy)">
+      <small style="opacity:.6;font-size:10px;text-transform:uppercase;letter-spacing:.5px">Download free on</small>
+      <strong style="font-size:15px">Google Play</strong>
+    </div>
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">
+    <div class="logo-icon">LG</div>
+    <div class="logo-text" style="font-size:17px">Loan<span>Generators</span></div>
+  </div>
+  <div class="footer-links">
+    <a href="#">Privacy</a>
+    <a href="#">Terms</a>
+    <a href="#">Support</a>
+    <a href="https://play.google.com/store/apps/details?id=com.loan.generator" target="_blank">Download App</a>
+  </div>
+  <p>© 2026 LoanGenerators. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
