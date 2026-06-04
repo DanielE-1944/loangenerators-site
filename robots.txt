@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://loangenerators.cm/sitemap.xml
+Sitemap: https://loangenerators.com/sitemap.xml
