@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy – LoanGenerators</title>
+  <meta name="description" content="Privacy Policy for LoanGenerators – Loan Calculator & Simulator. Learn how we handle your data." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0f1117;
+      --surface: #1a1d27;
+      --border: #2a2d3a;
+      --accent: #4f8ef7;
+      --accent-soft: rgba(79,142,247,0.1);
+      --text: #e8eaf0;
+      --muted: #8b8fa8;
+      --radius: 12px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(15,17,23,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    .logo-mark {
+      width: 32px;
+      height: 32px;
+      background: var(--accent);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .nav-back {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+    .nav-back:hover { color: var(--accent); }
+
+    /* HERO */
+    .hero {
+      text-align: center;
+      padding: 64px 24px 48px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: var(--accent-soft);
+      color: var(--accent);
+      border: 1px solid rgba(79,142,247,0.25);
+      border-radius: 999px;
+      padding: 4px 14px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 20px;
+      letter-spacing: 0.02em;
+    }
+
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 42px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 15px;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* LAYOUT */
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 56px 24px 80px;
+    }
+
+    /* SECTIONS */
+    .section {
+      margin-bottom: 48px;
+    }
+
+    .section h2 {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section h2 .icon {
+      width: 28px;
+      height: 28px;
+      background: var(--accent-soft);
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .section p {
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    .section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .section ul li {
+      color: var(--muted);
+      padding: 6px 0 6px 20px;
+      position: relative;
+    }
+
+    .section ul li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 13px;
+    }
+
+    /* HIGHLIGHT BOX */
+    .highlight {
+      background: var(--accent-soft);
+      border: 1px solid rgba(79,142,247,0.2);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      margin: 20px 0;
+    }
+
+    .highlight p {
+      color: var(--text);
+      margin: 0;
+      font-size: 15px;
+    }
+
+    .highlight strong {
+      color: var(--accent);
+    }
+
+    /* CONTACT CARD */
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 12px;
+    }
+
+    .contact-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--accent-soft);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .contact-card a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .contact-card a:hover { text-decoration: underline; }
+    .contact-card p { color: var(--muted); margin: 0; font-size: 14px; }
+    .contact-card strong { color: var(--text); display: block; margin-bottom: 4px; }
+
+    /* DATE */
+    .last-updated {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+      margin-top: 48px;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 28px 24px;
+      text-align: center;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-links a.active { color: var(--accent); }
+
+    footer p {
+      color: var(--muted);
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="nav-logo">
+      <div class="logo-mark">LG</div>
+      LoanGenerators
+    </a>
+    <a href="/" class="nav-back">← Back to Home</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-badge">Legal</div>
+    <h1>Privacy Policy</h1>
+    <p>We believe your financial data is yours alone. Here's exactly how we handle it.</p>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="container">
+
+    <div class="section">
+      <h2><span class="icon">👤</span> Who We Are</h2>
+      <p>LoanGenerators ("we", "us", or "our") operates the website <strong>loangenerators.com</strong> and the LoanGenerators Android application available on Google Play. We provide free loan simulation and calculation tools to help users make informed financial decisions.</p>
+      <p>Contact: <a href="mailto:loangenerators@gmail.com" style="color:var(--accent)">loangenerators@gmail.com</a></p>
+    </div>
+
+    <div class="section">
+      <h2><span class="icon">🔒</span> Data We Do Not Collect</h2>
+      <div class="highlight">
+        <p><strong>Your loan data never leaves your device.</strong> All calculations — loan amounts, interest rates, payment schedules — are performed locally in your browser or app. We do not store, transmit, or have any access to the numbers you enter.</p>
+      </div>
+      <p>Specifically, we do not collect:</p>
+      <ul>
+        <li>Loan amounts, interest rates, or repayment terms you enter</li>
+        <li>Names, addresses, or financial account details</li>
+        <li>Credit scores or banking information</li>
+        <li>Any personally identifiable information</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2><span class="icon">📊</span> Data We May Collect Automatically</h2>
+      <p>Like most websites, our hosting and analytics infrastructure may automatically collect limited technical data when you visit loangenerators.com:</p>
+      <ul>
+        <li>Browser type and version</li>
+        <li>Operating system</li>
+        <li>Pages visited and time spent on site</li>
+        <li>Referring URL (how you found us)</li>
+        <li>Approximate geographic region (country/city level)</li>
+        <li>Device type (mobile, tablet, desktop)</li>
+      </ul>
+      <p>This data is anonymous, aggregated, and used solely to understand how users interact with our site so we can improve it. It cannot be used to identify you personally.</p>
+    </div>
+
+    <div class="section">
+      <h2><span class="icon">📱</span> Android App</h2>
+      <p>The LoanGenerators Android app operates entirely offline. All loan simulations, amortization schedules, and comparisons are computed on your device. The app does not:</p>
+      <ul>
+        <li>Require an account or registration</li>
+        <li>Send your financial inputs to any server</li>
+        <li>Access your contacts, location, or other device data</li>
+        <li>Display behaviorally targeted advertising</li>
+      </ul>
+      <p>The app may be subject to Google Play's standard platform policies. Please refer to <a href="https://policies.google.com/privacy" target="_blank" rel="noopener" style="color:var(--accent)">Google's Privacy Policy</a> for information about Google Play's data practices.</p>
+    </div>
+
+    <div class="section">
+      <h2><span class="icon">📢</span> Advertising</h2>
+      <p>We may display advertisements on loangenerators.com through Google AdSense or similar ad networks. These services may use cookies and similar technologies to show relevant ads based on your browsing history across other websites. This is governed by Google's advertising policies.</p>
+      <p>You can opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener" style="color:var(--accent)">Google's Ad Settings</a> or by using the <a href="https://optout.aboutads.info/" target="_blank" rel="noopener" style="color:var(--accent)">Digital Advertising Alliance opt-out tool</a>.</p>
+    </div>
+
+    <div class="section">
+      <h2><span class="icon">🍪</span> Cookies</h2>
+      <p>Our website may use cookies for the following purposes:</p>
+      <ul>
+        <li><strong style="color:var(--text)">Analytics:</strong> to understand site usage patterns (anonymous)</li>
+        <li><strong style="color:var(--text)">Advertising:</strong> if AdSense is active, Google may set cookies to serve relevant ads</li>
+        <li><strong style="color:var(--text)">Preferences:</strong> to remember any display settings you choose</li>
+      </ul>
+      <p>You can control or disable cookies through your browser settings at any time.</p>
+    </div>
+
+    <div class="section">
+      <h2><span class="icon">🔗</span> Third-Party Links</h2>
+      <p>Our site may contain links to external sites such as Google Play. We are not responsible for the privacy practices of these third parties and encourage you to review their privacy policies before providing any personal information.</p>
+    </div>
+
+    <div class="section">
+      <h2><span class="icon">👶</span> Children's Privacy</h2>
+      <p>LoanGenerators is not directed at children under the age of 13. We do not knowingly collect personal information from children. If you believe a child has provided us with personal information, please contact us and we will promptly delete it.</p>
+    </div>
+
+    <div class="section">
+      <h2><span class="icon">✏️</span> Changes to This Policy</h2>
+      <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated date. We encourage you to review this policy periodically. Continued use of LoanGenerators after any changes constitutes your acceptance of the updated policy.</p>
+    </div>
+
+    <div class="section">
+      <h2><span class="icon">✉️</span> Contact Us</h2>
+      <p>If you have any questions about this Privacy Policy or how your data is handled, please reach out:</p>
+      <div class="contact-card">
+        <div class="contact-icon">📧</div>
+        <div>
+          <strong>LoanGenerators Support</strong>
+          <p><a href="mailto:loangenerators@gmail.com">loangenerators@gmail.com</a></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="last-updated">
+      Last updated: June 13, 2026
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/privacy.html" class="active">Privacy</a>
+      <a href="mailto:loangenerators@gmail.com">Support</a>
+      <a href="https://play.google.com/store/apps/details?id=com.loan.generator" target="_blank" rel="noopener">Download App</a>
+    </div>
+    <p>© 2026 LoanGenerators. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
