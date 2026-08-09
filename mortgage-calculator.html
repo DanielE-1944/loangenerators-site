@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ===== SEO META TAGS ===== -->
+<title>Mortgage Calculator - Monthly Payment & Amortization | LoanGenerators</title>
+<meta name="description" content="Free mortgage calculator. Estimate your monthly mortgage payment, total interest, and amortization schedule instantly, including property tax and insurance.">
+<meta name="keywords" content="mortgage calculator, home loan calculator, monthly mortgage payment calculator, amortization schedule, mortgage payment estimator">
+<link rel="canonical" href="https://loangenerators.com/mortgage-calculator.html">
+
+<!-- ===== OPEN GRAPH ===== -->
+<meta property="og:title" content="Mortgage Calculator - Monthly Payment & Amortization">
+<meta property="og:description" content="Estimate your monthly mortgage payment, total interest, and amortization schedule for free.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://loangenerators.com/mortgage-calculator.html">
+<meta property="og:site_name" content="LoanGenerators">
+
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+
+<!-- ===== JSON-LD: WebApplication ===== -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Mortgage Calculator",
+  "url": "https://loangenerators.com/mortgage-calculator.html",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "LoanGenerators",
+    "url": "https://loangenerators.com"
+  }
+}
+</script>
+
+<!-- ===== JSON-LD: FAQPage ===== -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do you calculate a monthly mortgage payment?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A monthly mortgage payment is based on the loan amount (home price minus down payment), the annual interest rate, and the loan term in years. The principal and interest are spread into equal monthly installments; property tax and home insurance are often added on top as an estimate."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is included in a mortgage payment besides principal and interest?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Beyond principal and interest, many homeowners also pay monthly property tax and homeowners insurance, sometimes collected together in an escrow account by the lender. Some loans also include private mortgage insurance (PMI) if the down payment is below 20%."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does the loan term affect my mortgage payment?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A longer term, such as 30 years instead of 15, lowers the monthly payment but increases the total interest paid over the life of the loan. A shorter term raises the monthly payment but builds equity faster and costs less overall."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+  :root {
+    --primary: #1a5fb4;
+    --primary-dark: #103a70;
+    --bg: #f7f9fc;
+    --card-bg: #ffffff;
+    --text: #1c1f26;
+    --muted: #5b6472;
+    --border: #e2e6ec;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+  h1, h2 {
+    font-family: 'Fraunces', Georgia, serif;
+  }
+  header {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: #fff;
+    padding: 28px 16px;
+    text-align: center;
+  }
+  header h1 { margin: 0 0 8px; font-size: 1.8rem; font-weight: 700; }
+  header p { margin: 0; opacity: 0.9; font-size: 0.95rem; }
+  nav.breadcrumb {
+    max-width: 900px;
+    margin: 12px auto 0;
+    padding: 0 16px;
+    font-size: 0.85rem;
+  }
+  nav.breadcrumb a { color: var(--primary); text-decoration: none; }
+  main { max-width: 900px; margin: 0 auto; padding: 24px 16px 60px; }
+
+  .calculator-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    margin-bottom: 32px;
+  }
+  .field { margin-bottom: 16px; }
+  .field label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+    color: var(--muted);
+  }
+  .field input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+  }
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  @media (max-width: 520px) {
+    .grid-2 { grid-template-columns: 1fr; }
+  }
+  button.calc-btn {
+    width: 100%;
+    padding: 14px;
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 8px;
+    font-family: inherit;
+  }
+  button.calc-btn:hover { background: var(--primary-dark); }
+
+  .result {
+    margin-top: 20px;
+    padding: 18px;
+    background: #eef4fc;
+    border-radius: 10px;
+    display: none;
+  }
+  .result.show { display: block; }
+  .result-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    border-bottom: 1px solid #dbe6f5;
+    font-size: 0.95rem;
+  }
+  .result-row:last-child { border-bottom: none; }
+  .result-row strong { color: var(--primary-dark); }
+  .result-row.total { font-weight: 700; font-size: 1.05rem; }
+
+  article h2 { font-size: 1.35rem; margin-top: 40px; }
+  article p { color: var(--text); }
+  .faq { margin-top: 12px; }
+  .faq-item { margin-bottom: 18px; }
+  .faq-item h3 { font-size: 1.05rem; margin-bottom: 4px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; }
+  .faq-item p { margin: 0; color: var(--muted); }
+
+  .cta-box {
+    margin-top: 40px;
+    padding: 20px;
+    background: var(--primary);
+    color: #fff;
+    border-radius: 12px;
+    text-align: center;
+  }
+  .cta-box a {
+    display: inline-block;
+    margin-top: 10px;
+    background: #fff;
+    color: var(--primary-dark);
+    padding: 10px 22px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .internal-links { margin-top: 32px; font-size: 0.9rem; }
+  .internal-links a { color: var(--primary); margin-right: 14px; text-decoration: none; }
+
+  .ad-slot {
+    margin: 30px 0;
+    text-align: center;
+    min-height: 90px;
+  }
+
+  footer {
+    text-align: center;
+    padding: 24px 16px;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  footer a { color: var(--muted); }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Mortgage Calculator</h1>
+  <p>Estimate your monthly mortgage payment, including tax and insurance</p>
+</header>
+
+<nav class="breadcrumb">
+  <a href="/">Home</a> &raquo; Mortgage Calculator
+</nav>
+
+<main>
+
+  <!-- ===== CALCULATOR ===== -->
+  <section class="calculator-card" aria-label="Mortgage calculator">
+    <div class="grid-2">
+      <div class="field">
+        <label for="homePrice">Home price ($)</label>
+        <input type="number" id="homePrice" value="350000" min="0">
+      </div>
+      <div class="field">
+        <label for="downPayment">Down payment ($)</label>
+        <input type="number" id="downPayment" value="70000" min="0">
+      </div>
+      <div class="field">
+        <label for="interestRate">Annual interest rate (%)</label>
+        <input type="number" id="interestRate" value="6.5" min="0" step="0.01">
+      </div>
+      <div class="field">
+        <label for="loanTerm">Loan term (years)</label>
+        <input type="number" id="loanTerm" value="30" min="1">
+      </div>
+      <div class="field">
+        <label for="propertyTax">Annual property tax ($, optional)</label>
+        <input type="number" id="propertyTax" value="4200" min="0">
+      </div>
+      <div class="field">
+        <label for="homeInsurance">Annual home insurance ($, optional)</label>
+        <input type="number" id="homeInsurance" value="1500" min="0">
+      </div>
+    </div>
+    <button class="calc-btn" onclick="calculateMortgage()">Calculate Payment</button>
+
+    <div class="result" id="resultBox">
+      <div class="result-row"><span>Principal & interest</span><strong id="rPI">-</strong></div>
+      <div class="result-row"><span>Property tax (monthly)</span><strong id="rTax">-</strong></div>
+      <div class="result-row"><span>Home insurance (monthly)</span><strong id="rIns">-</strong></div>
+      <div class="result-row total"><span>Total monthly payment</span><strong id="rMonthly">-</strong></div>
+      <div class="result-row"><span>Loan amount</span><strong id="rPrincipal">-</strong></div>
+      <div class="result-row"><span>Total interest over loan term</span><strong id="rInterest">-</strong></div>
+    </div>
+  </section>
+
+  <div class="ad-slot">
+    <!-- AdSense unit: reuse existing ca-pub-2401324520716270 slot -->
+  </div>
+
+  <!-- ===== EXPLANATORY CONTENT (SEO) ===== -->
+  <article>
+    <h2>How mortgage payments are calculated</h2>
+    <p>
+      A mortgage is a long-term amortizing loan: you borrow the home price minus your down payment,
+      and repay it in equal monthly installments over the loan term, typically 15 or 30 years.
+      Each payment covers both principal and interest ― early payments are mostly interest, and later
+      payments pay down more principal. On top of principal and interest, most homeowners also budget
+      for property tax and home insurance, which are often collected monthly and held in escrow by the lender.
+    </p>
+
+    <h2>15-year vs. 30-year mortgages</h2>
+    <p>
+      A 30-year mortgage spreads payments over more time, resulting in a lower monthly payment but
+      significantly more interest paid over the life of the loan. A 15-year mortgage has a higher monthly
+      payment but builds equity faster and can save tens of thousands of dollars in interest. The right
+      choice depends on your monthly budget versus your long-term savings goals.
+    </p>
+
+    <h2>Frequently asked questions</h2>
+    <div class="faq">
+      <div class="faq-item">
+        <h3>How do you calculate a monthly mortgage payment?</h3>
+        <p>It's based on the loan amount (price minus down payment), the annual interest rate, and the term in years, split into equal payments that cover interest and principal.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What is included in a mortgage payment besides principal and interest?</h3>
+        <p>Many homeowners also pay property tax and home insurance monthly, sometimes collected in escrow. Loans with a down payment under 20% often add private mortgage insurance (PMI) too.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How does the loan term affect my payment?</h3>
+        <p>A longer term (30 years) lowers the monthly payment but increases total interest. A shorter term (15 years) raises the payment but costs less overall.</p>
+      </div>
+    </div>
+  </article>
+
+  <div class="cta-box">
+    <p>Want more loan types, saved calculations, and offline access?</p>
+    <a href="https://play.google.com/store/apps/details?id=com.loan.generator" target="_blank" rel="noopener">Get the LoanGenerators app</a>
+  </div>
+
+  <nav class="internal-links">
+    <a href="/">Home</a>
+    <a href="/car-loan-calculator.html">Car Loan Calculator</a>
+    <a href="/personal-loan-calculator.html">Personal Loan Calculator</a>
+    <a href="/amortization-schedule.html">Amortization Schedule</a>
+  </nav>
+
+</main>
+
+<footer>
+  <p>&copy; <span id="year"></span> LoanGenerators. <a href="/privacy.html">Privacy Policy</a></p>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  function calculateMortgage() {
+    const price = parseFloat(document.getElementById('homePrice').value) || 0;
+    const down = parseFloat(document.getElementById('downPayment').value) || 0;
+    const annualRate = parseFloat(document.getElementById('interestRate').value) || 0;
+    const years = parseInt(document.getElementById('loanTerm').value) || 1;
+    const annualTax = parseFloat(document.getElementById('propertyTax').value) || 0;
+    const annualInsurance = parseFloat(document.getElementById('homeInsurance').value) || 0;
+
+    const principal = Math.max(price - down, 0);
+    const months = years * 12;
+    const monthlyRate = (annualRate / 100) / 12;
+
+    let monthlyPI;
+    if (monthlyRate === 0) {
+      monthlyPI = principal / months;
+    } else {
+      monthlyPI = principal *
+        (monthlyRate * Math.pow(1 + monthlyRate, months)) /
+        (Math.pow(1 + monthlyRate, months) - 1);
+    }
+
+    const monthlyTax = annualTax / 12;
+    const monthlyInsurance = annualInsurance / 12;
+    const totalMonthly = monthlyPI + monthlyTax + monthlyInsurance;
+
+    const totalInterest = (monthlyPI * months) - principal;
+
+    const fmt = (n) => '$' + n.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+    document.getElementById('rPI').textContent = fmt(monthlyPI);
+    document.getElementById('rTax').textContent = fmt(monthlyTax);
+    document.getElementById('rIns').textContent = fmt(monthlyInsurance);
+    document.getElementById('rMonthly').textContent = fmt(totalMonthly);
+    document.getElementById('rPrincipal').textContent = fmt(principal);
+    document.getElementById('rInterest').textContent = fmt(Math.max(totalInterest, 0));
+
+    document.getElementById('resultBox').classList.add('show');
+  }
+</script>
+
+</body>
+</html>
