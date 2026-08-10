@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ===== SEO META TAGS ===== -->
+<title>Personal Loan Calculator - Monthly Payment & Interest Calculator | LoanGenerators</title>
+<meta name="description" content="Free personal loan calculator. Estimate your monthly payment, total interest, and total repayment cost in seconds. Works for any unsecured personal loan.">
+<meta name="keywords" content="personal loan calculator, unsecured loan calculator, monthly loan payment calculator, personal loan interest calculator, loan repayment calculator">
+<link rel="canonical" href="https://loangenerators.com/personal-loan-calculator.html">
+
+<!-- ===== OPEN GRAPH ===== -->
+<meta property="og:title" content="Personal Loan Calculator - Monthly Payment & Interest Calculator">
+<meta property="og:description" content="Estimate your monthly personal loan payment, total interest, and total cost for free.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://loangenerators.com/personal-loan-calculator.html">
+<meta property="og:site_name" content="LoanGenerators">
+
+<!-- ===== JSON-LD: WebApplication ===== -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Personal Loan Calculator",
+  "url": "https://loangenerators.com/personal-loan-calculator.html",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Any",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "LoanGenerators",
+    "url": "https://loangenerators.com"
+  }
+}
+</script>
+
+<!-- ===== JSON-LD: FAQPage (targets featured snippets / AI Overviews) ===== -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do you calculate a personal loan payment?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A personal loan payment is calculated from the loan amount, the annual interest rate, and the loan term in months. The loan is split into equal monthly payments that cover both principal and interest, so early payments are interest-heavy and later payments pay down more principal."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a good interest rate for a personal loan?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Personal loan interest rates vary widely based on credit score, income, loan term, and whether the loan is secured or unsecured. Borrowers with strong credit typically qualify for the lowest rates. It's best to compare offers from several lenders before signing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does an origination fee affect how much I actually receive?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Many personal loans deduct an origination fee from the loan amount before disbursing funds, so the cash you actually receive is lower than the amount you're repaying. Monthly payments are still calculated on the full loan amount."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it better to choose a shorter or longer loan term?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A shorter term means higher monthly payments but less total interest paid. A longer term lowers the monthly payment but increases the total interest over the life of the loan. The right choice depends on your monthly budget versus your goal of minimizing total cost."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+  :root {
+    --primary: #1a5fb4;
+    --primary-dark: #103a70;
+    --bg: #f7f9fc;
+    --card-bg: #ffffff;
+    --text: #1c1f26;
+    --muted: #5b6472;
+    --border: #e2e6ec;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+  }
+  header {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: #fff;
+    padding: 28px 16px;
+    text-align: center;
+  }
+  header h1 { margin: 0 0 8px; font-size: 1.7rem; }
+  header p { margin: 0; opacity: 0.9; font-size: 0.95rem; }
+  nav.breadcrumb {
+    max-width: 900px;
+    margin: 12px auto 0;
+    padding: 0 16px;
+    font-size: 0.85rem;
+  }
+  nav.breadcrumb a { color: var(--primary); text-decoration: none; }
+  main { max-width: 900px; margin: 0 auto; padding: 24px 16px 60px; }
+
+  .calculator-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    margin-bottom: 32px;
+  }
+  .field { margin-bottom: 16px; }
+  .field label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 6px;
+    color: var(--muted);
+  }
+  .field input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 1rem;
+  }
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  @media (max-width: 520px) {
+    .grid-2 { grid-template-columns: 1fr; }
+  }
+  button.calc-btn {
+    width: 100%;
+    padding: 14px;
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 8px;
+  }
+  button.calc-btn:hover { background: var(--primary-dark); }
+
+  .result {
+    margin-top: 20px;
+    padding: 18px;
+    background: #eef4fc;
+    border-radius: 10px;
+    display: none;
+  }
+  .result.show { display: block; }
+  .result-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    border-bottom: 1px solid #dbe6f5;
+    font-size: 0.95rem;
+  }
+  .result-row:last-child { border-bottom: none; }
+  .result-row strong { color: var(--primary-dark); }
+
+  article h2 { font-size: 1.3rem; margin-top: 40px; }
+  article p { color: var(--text); }
+  .faq { margin-top: 12px; }
+  .faq-item { margin-bottom: 18px; }
+  .faq-item h3 { font-size: 1.05rem; margin-bottom: 4px; }
+  .faq-item p { margin: 0; color: var(--muted); }
+
+  .cta-box {
+    margin-top: 40px;
+    padding: 20px;
+    background: var(--primary);
+    color: #fff;
+    border-radius: 12px;
+    text-align: center;
+  }
+  .cta-box a {
+    display: inline-block;
+    margin-top: 10px;
+    background: #fff;
+    color: var(--primary-dark);
+    padding: 10px 22px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .internal-links { margin-top: 32px; font-size: 0.9rem; }
+  .internal-links a { color: var(--primary); margin-right: 14px; text-decoration: none; }
+
+  .ad-slot {
+    margin: 30px 0;
+    text-align: center;
+    min-height: 90px;
+  }
+
+  footer {
+    text-align: center;
+    padding: 24px 16px;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  footer a { color: var(--muted); }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Personal Loan Calculator</h1>
+  <p>Estimate your monthly payment and total interest in seconds</p>
+</header>
+
+<nav class="breadcrumb">
+  <a href="/">Home</a> &raquo; Personal Loan Calculator
+</nav>
+
+<main>
+
+  <!-- ===== CALCULATOR ===== -->
+  <section class="calculator-card" aria-label="Personal loan calculator">
+    <div class="grid-2">
+      <div class="field">
+        <label for="loanAmount">Loan amount ($)</label>
+        <input type="number" id="loanAmount" value="10000" min="0">
+      </div>
+      <div class="field">
+        <label for="originationFee">Origination fee (%)</label>
+        <input type="number" id="originationFee" value="0" min="0" step="0.01">
+      </div>
+      <div class="field">
+        <label for="interestRate">Annual interest rate (%)</label>
+        <input type="number" id="interestRate" value="9.5" min="0" step="0.01">
+      </div>
+      <div class="field">
+        <label for="loanTerm">Loan term (months)</label>
+        <input type="number" id="loanTerm" value="36" min="1">
+      </div>
+    </div>
+
+    <button class="calc-btn" onclick="calculatePersonalLoan()">Calculate Payment</button>
+
+    <div class="result" id="resultBox">
+      <div class="result-row"><span>Monthly payment</span><strong id="rMonthly">-</strong></div>
+      <div class="result-row"><span>Origination fee</span><strong id="rFee">-</strong></div>
+      <div class="result-row"><span>Cash you receive</span><strong id="rNetProceeds">-</strong></div>
+      <div class="result-row"><span>Total interest paid</span><strong id="rInterest">-</strong></div>
+      <div class="result-row"><span>Total cost of loan</span><strong id="rTotal">-</strong></div>
+    </div>
+  </section>
+
+  <div class="ad-slot">
+    <!-- AdSense unit: reuse existing ca-pub-2401324520716270 slot -->
+  </div>
+
+  <!-- ===== EXPLANATORY CONTENT (SEO) ===== -->
+  <article>
+    <h2>How personal loan payments are calculated</h2>
+    <p>
+      A personal loan is a fixed-term (amortizing) loan: you borrow a lump sum and repay it in equal monthly
+      installments that include both principal and interest. Early in the loan, more of each payment goes toward
+      interest; over time, more goes toward paying down the principal. The three numbers that matter most are the
+      loan amount, the annual interest rate, and the loan term ― a longer term lowers your monthly payment but
+      increases the total interest you pay over the life of the loan.
+    </p>
+
+    <h2>Tips for getting a better personal loan</h2>
+    <p>
+      Personal loans are usually unsecured, so lenders lean heavily on your credit score and income when setting
+      your rate ― improving your credit before applying can meaningfully lower your cost. Watch for origination
+      fees, which are often deducted from the loan upfront, meaning the cash you receive is less than the amount
+      you're repaying. It's also worth comparing pre-qualified offers from several lenders, since rates and fees
+      can vary significantly for the same borrower.
+    </p>
+
+    <h2>Frequently asked questions</h2>
+    <div class="faq">
+      <div class="faq-item">
+        <h3>How do you calculate a personal loan payment?</h3>
+        <p>It's based on the loan amount, the annual interest rate, and the term in months, split into equal payments that cover interest and principal.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What is a good interest rate for a personal loan?</h3>
+        <p>It depends on your credit score, income, loan term, and whether the loan is secured or unsecured. Comparing several lenders is the best way to find a competitive rate.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Does an origination fee affect how much I actually receive?</h3>
+        <p>Yes ― many lenders deduct the fee from the loan amount before disbursing funds, so your net proceeds are lower than the amount you're repaying.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Is it better to choose a shorter or longer loan term?</h3>
+        <p>A shorter term means higher monthly payments but less total interest. A longer term lowers the monthly payment but costs more overall.</p>
+      </div>
+    </div>
+  </article>
+
+  <div class="cta-box">
+    <p>Want more loan types, saved calculations, and offline access?</p>
+    <a href="https://play.google.com/store/apps/details?id=com.loan.generator" target="_blank" rel="noopener">Get the LoanGenerators app</a>
+  </div>
+
+  <nav class="internal-links">
+    <a href="/">Home</a>
+    <a href="/car-loan-calculator.html">Car Loan Calculator</a>
+    <a href="/mortgage-calculator.html">Mortgage Calculator</a>
+  </nav>
+
+</main>
+
+<footer>
+  <p>&copy; <span id="year"></span> LoanGenerators. <a href="/privacy.html">Privacy Policy</a></p>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  function calculatePersonalLoan() {
+    const amount = parseFloat(document.getElementById('loanAmount').value) || 0;
+    const feePct = parseFloat(document.getElementById('originationFee').value) || 0;
+    const annualRate = parseFloat(document.getElementById('interestRate').value) || 0;
+    const months = parseInt(document.getElementById('loanTerm').value) || 1;
+
+    const monthlyRate = (annualRate / 100) / 12;
+    const fmt = (n) => '$' + n.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+    let monthlyPayment;
+    if (monthlyRate === 0) {
+      monthlyPayment = amount / months;
+    } else {
+      monthlyPayment = amount *
+        (monthlyRate * Math.pow(1 + monthlyRate, months)) /
+        (Math.pow(1 + monthlyRate, months) - 1);
+    }
+
+    const fee = amount * (feePct / 100);
+    const netProceeds = amount - fee;
+    const totalCost = monthlyPayment * months;
+    const totalInterest = totalCost - amount;
+
+    document.getElementById('rMonthly').textContent = fmt(monthlyPayment);
+    document.getElementById('rFee').textContent = fmt(fee);
+    document.getElementById('rNetProceeds').textContent = fmt(netProceeds);
+    document.getElementById('rInterest').textContent = fmt(Math.max(totalInterest, 0));
+    document.getElementById('rTotal').textContent = fmt(totalCost);
+
+    document.getElementById('resultBox').classList.add('show');
+  }
+</script>
+
+</body>
+</html>
