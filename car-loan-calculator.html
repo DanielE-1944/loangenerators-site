@@ -5,25 +5,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- ===== SEO META TAGS ===== -->
-<title>Car Loan Calculator - Monthly Payment & Interest Calculator | LoanGenerators</title>
-<meta name="description" content="Free car loan calculator. Estimate your monthly car payment, total interest, and full amortization schedule in seconds. Works for new and used car loans.">
-<meta name="keywords" content="car loan calculator, auto loan calculator, monthly car payment calculator, car finance calculator, vehicle loan calculator">
-<link rel="canonical" href="https://loangenerators.com/car-loan-calculator.html">
+<title>Mortgage Calculator - Monthly Payment & Amortization | LoanGenerators</title>
+<meta name="description" content="Free mortgage calculator. Estimate your monthly mortgage payment, total interest, and amortization schedule instantly, including property tax and insurance.">
+<meta name="keywords" content="mortgage calculator, home loan calculator, monthly mortgage payment calculator, amortization schedule, mortgage payment estimator">
+<link rel="canonical" href="https://loangenerators.com/mortgage-calculator.html">
 
 <!-- ===== OPEN GRAPH ===== -->
-<meta property="og:title" content="Car Loan Calculator - Monthly Payment & Interest Calculator">
-<meta property="og:description" content="Estimate your monthly car payment, total interest, and amortization schedule for free.">
+<meta property="og:title" content="Mortgage Calculator - Monthly Payment & Amortization">
+<meta property="og:description" content="Estimate your monthly mortgage payment, total interest, and amortization schedule for free.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://loangenerators.com/car-loan-calculator.html">
+<meta property="og:url" content="https://loangenerators.com/mortgage-calculator.html">
 <meta property="og:site_name" content="LoanGenerators">
+
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
 
 <!-- ===== JSON-LD: WebApplication ===== -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Car Loan Calculator",
-  "url": "https://loangenerators.com/car-loan-calculator.html",
+  "name": "Mortgage Calculator",
+  "url": "https://loangenerators.com/mortgage-calculator.html",
   "applicationCategory": "FinanceApplication",
   "operatingSystem": "Any",
   "offers": {
@@ -39,7 +41,7 @@
 }
 </script>
 
-<!-- ===== JSON-LD: FAQPage (targets featured snippets / AI Overviews) ===== -->
+<!-- ===== JSON-LD: FAQPage ===== -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -47,34 +49,34 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "How do you calculate a car loan payment?",
+      "name": "How do you calculate a monthly mortgage payment?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "A car loan payment is calculated using the loan amount (vehicle price minus down payment), the annual interest rate, and the loan term in months. The formula divides the loan into equal monthly payments that cover both principal and interest, so early payments are interest-heavy and later payments pay down more principal."
+        "text": "A monthly mortgage payment is based on the loan amount (home price minus down payment), the annual interest rate, and the loan term in years. The principal and interest are spread into equal monthly installments; property tax and home insurance are often added on top as an estimate."
       }
     },
     {
       "@type": "Question",
-      "name": "What is a good interest rate for a car loan?",
+      "name": "What is included in a mortgage payment besides principal and interest?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Car loan interest rates vary by credit score, loan term, and whether the car is new or used. Shorter terms and stronger credit typically qualify for lower rates. It's best to compare offers from several lenders before signing."
+        "text": "Beyond principal and interest, many homeowners also pay monthly property tax and homeowners insurance, sometimes collected together in an escrow account by the lender. Some loans also include private mortgage insurance (PMI) if the down payment is below 20%."
       }
     },
     {
       "@type": "Question",
-      "name": "Does a bigger down payment lower my monthly car payment?",
+      "name": "How does the loan term affect my mortgage payment?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. A larger down payment reduces the loan principal, which lowers both the monthly payment and the total interest paid over the life of the loan."
+        "text": "A longer term, such as 30 years instead of 15, lowers the monthly payment but increases the total interest paid over the life of the loan. A shorter term raises the monthly payment but builds equity faster and costs less overall."
       }
     },
     {
       "@type": "Question",
-      "name": "Can the down payment be paid at the end of the loan instead of the start?",
+      "name": "How do I get rid of PMI on my mortgage?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, this is known as a balloon payment structure. The full vehicle price is financed, monthly payments are lower because they only cover part of the principal, and the deferred down payment amount is due as a single lump sum at the end of the loan term."
+        "text": "PMI is typically removed automatically once your loan balance drops to 78% of the home's original value, or you can request removal once it reaches 80%, provided your payments are current. Paying down the principal faster or making a larger down payment upfront both shorten the time PMI is charged."
       }
     }
   ]
@@ -94,10 +96,13 @@
   * { box-sizing: border-box; }
   body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
     background: var(--bg);
     color: var(--text);
     line-height: 1.6;
+  }
+  h1, h2 {
+    font-family: 'Fraunces', Georgia, serif;
   }
   header {
     background: linear-gradient(135deg, var(--primary), var(--primary-dark));
@@ -105,7 +110,7 @@
     padding: 28px 16px;
     text-align: center;
   }
-  header h1 { margin: 0 0 8px; font-size: 1.7rem; }
+  header h1 { margin: 0 0 8px; font-size: 1.8rem; font-weight: 700; }
   header p { margin: 0; opacity: 0.9; font-size: 0.95rem; }
   nav.breadcrumb {
     max-width: 900px;
@@ -138,6 +143,7 @@
     border: 1px solid var(--border);
     border-radius: 8px;
     font-size: 1rem;
+    font-family: inherit;
   }
   .grid-2 {
     display: grid;
@@ -158,6 +164,7 @@
     font-weight: 600;
     cursor: pointer;
     margin-top: 8px;
+    font-family: inherit;
   }
   button.calc-btn:hover { background: var(--primary-dark); }
 
@@ -178,29 +185,13 @@
   }
   .result-row:last-child { border-bottom: none; }
   .result-row strong { color: var(--primary-dark); }
+  .result-row.total { font-weight: 700; font-size: 1.05rem; }
 
-  .toggle-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin-top: 4px;
-  }
-  .toggle-option {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 0.9rem;
-    font-weight: 400;
-    color: var(--text);
-    cursor: pointer;
-  }
-  .toggle-option input { width: auto; }
-
-  article h2 { font-size: 1.3rem; margin-top: 40px; }
+  article h2 { font-size: 1.35rem; margin-top: 40px; }
   article p { color: var(--text); }
   .faq { margin-top: 12px; }
   .faq-item { margin-bottom: 18px; }
-  .faq-item h3 { font-size: 1.05rem; margin-bottom: 4px; }
+  .faq-item h3 { font-size: 1.05rem; margin-bottom: 4px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; }
   .faq-item p { margin: 0; color: var(--muted); }
 
   .cta-box {
@@ -243,59 +234,53 @@
 <body>
 
 <header>
-  <h1>Car Loan Calculator</h1>
-  <p>Estimate your monthly car payment and total interest in seconds</p>
+  <h1>Mortgage Calculator</h1>
+  <p>Estimate your monthly mortgage payment, including tax and insurance</p>
 </header>
 
 <nav class="breadcrumb">
-  <a href="/">Home</a> &raquo; Car Loan Calculator
+  <a href="/">Home</a> &raquo; Mortgage Calculator
 </nav>
 
 <main>
 
   <!-- ===== CALCULATOR ===== -->
-  <section class="calculator-card" aria-label="Car loan calculator">
+  <section class="calculator-card" aria-label="Mortgage calculator">
     <div class="grid-2">
       <div class="field">
-        <label for="carPrice">Car price ($)</label>
-        <input type="number" id="carPrice" value="25000" min="0">
+        <label for="homePrice">Home price ($)</label>
+        <input type="number" id="homePrice" value="350000" min="0">
       </div>
       <div class="field">
         <label for="downPayment">Down payment ($)</label>
-        <input type="number" id="downPayment" value="3000" min="0">
+        <input type="number" id="downPayment" value="70000" min="0">
       </div>
       <div class="field">
         <label for="interestRate">Annual interest rate (%)</label>
         <input type="number" id="interestRate" value="6.5" min="0" step="0.01">
       </div>
       <div class="field">
-        <label for="loanTerm">Loan term (months)</label>
-        <input type="number" id="loanTerm" value="60" min="1">
+        <label for="loanTerm">Loan term (years)</label>
+        <input type="number" id="loanTerm" value="30" min="1">
+      </div>
+      <div class="field">
+        <label for="propertyTax">Annual property tax ($, optional)</label>
+        <input type="number" id="propertyTax" value="4200" min="0">
+      </div>
+      <div class="field">
+        <label for="homeInsurance">Annual home insurance ($, optional)</label>
+        <input type="number" id="homeInsurance" value="1500" min="0">
       </div>
     </div>
-
-    <div class="field">
-      <label>When is the down payment paid?</label>
-      <div class="toggle-group">
-        <label class="toggle-option">
-          <input type="radio" name="downTiming" value="start" checked>
-          At the start (reduces principal now)
-        </label>
-        <label class="toggle-option">
-          <input type="radio" name="downTiming" value="end">
-          At the end (balloon payment)
-        </label>
-      </div>
-    </div>
-
-    <button class="calc-btn" onclick="calculateCarLoan()">Calculate Payment</button>
+    <button class="calc-btn" onclick="calculateMortgage()">Calculate Payment</button>
 
     <div class="result" id="resultBox">
-      <div class="result-row"><span>Monthly payment</span><strong id="rMonthly">-</strong></div>
-      <div class="result-row" id="rBalloonRow" style="display:none;"><span>Final balloon payment (due at end)</span><strong id="rBalloon">-</strong></div>
-      <div class="result-row"><span>Amount financed</span><strong id="rPrincipal">-</strong></div>
-      <div class="result-row"><span>Total interest paid</span><strong id="rInterest">-</strong></div>
-      <div class="result-row"><span>Total cost of loan</span><strong id="rTotal">-</strong></div>
+      <div class="result-row"><span>Principal & interest</span><strong id="rPI">-</strong></div>
+      <div class="result-row"><span>Property tax (monthly)</span><strong id="rTax">-</strong></div>
+      <div class="result-row"><span>Home insurance (monthly)</span><strong id="rIns">-</strong></div>
+      <div class="result-row total"><span>Total monthly payment</span><strong id="rMonthly">-</strong></div>
+      <div class="result-row"><span>Loan amount</span><strong id="rPrincipal">-</strong></div>
+      <div class="result-row"><span>Total interest over loan term</span><strong id="rInterest">-</strong></div>
     </div>
   </section>
 
@@ -305,53 +290,71 @@
 
   <!-- ===== EXPLANATORY CONTENT (SEO) ===== -->
   <article>
-    <h2>How car loan payments are calculated</h2>
+    <h2>Worked example: a $350,000 home with 20% down</h2>
     <p>
-      A car loan is a fixed-term (amortizing) loan: you borrow the car's price minus your down payment,
-      and repay it in equal monthly installments that include both principal and interest. Early in the loan,
-      more of each payment goes toward interest; over time, more goes toward paying down the principal.
-      The three numbers that matter most are the loan amount, the annual interest rate, and the loan term ―
-      a longer term lowers your monthly payment but increases the total interest you pay over the life of the loan.
+      Say you're buying a $350,000 home with a $70,000 down payment (20%) on a 30-year
+      fixed mortgage at 6.5%. You'd be borrowing $280,000, which comes out to a
+      principal-and-interest payment of about $1,770 a month. Add typical annual costs of
+      $4,200 in property tax and $1,500 in home insurance — split monthly, that's another
+      $475 — and your total monthly payment lands around $2,245. Over the full 30 years
+      you'd pay roughly $357,000 in interest alone, more than the original loan amount.
+      Switch to a 15-year term at the same rate and the monthly principal-and-interest
+      payment rises to about $2,440, but total interest drops to around $159,000 —
+      nearly $198,000 less over the life of the loan.
     </p>
 
-    <h2>Tips for getting a better car loan</h2>
+    <h2>How PMI affects your payment</h2>
     <p>
-      A larger down payment reduces both your monthly payment and total interest, since you're borrowing less
-      to begin with. Shorter loan terms (36-48 months instead of 60-72) usually carry lower interest rates and
-      cost less overall, even though the monthly payment is higher. It's also worth comparing pre-approved offers
-      from a bank or credit union against dealership financing before signing anything ― rates can vary significantly
-      between lenders for the same borrower.
+      If your down payment is below 20% of the home price, most lenders require private
+      mortgage insurance (PMI), which protects the lender — not you — in case you default.
+      PMI typically costs between 0.5% and 1.5% of the loan amount per year, added to your
+      monthly payment on top of principal, interest, tax, and insurance. On a $280,000 loan,
+      that's roughly $115 to $350 extra per month. The good news is PMI isn't permanent:
+      lenders are required to cancel it automatically once your balance reaches 78% of the
+      home's original value, and you can request removal yourself once you hit 80% equity —
+      so a bigger down payment or extra principal payments both shorten how long you carry it.
+    </p>
+
+    <h2>Choosing between a 15-year and 30-year term</h2>
+    <p>
+      A 30-year mortgage keeps the monthly payment lower and more manageable against a
+      typical household budget, which is why it's the more common choice. A 15-year
+      mortgage costs more per month but builds equity roughly twice as fast and can save
+      well over $100,000 in interest on a typical loan, since less of the balance sits
+      accruing interest over time. If you can comfortably afford the higher payment, the
+      15-year option is usually the cheaper path overall — use the calculator above to see
+      the exact difference for your numbers.
     </p>
 
     <h2>Frequently asked questions</h2>
     <div class="faq">
       <div class="faq-item">
-        <h3>How do you calculate a car loan payment?</h3>
-        <p>It's based on the loan amount (price minus down payment), the annual interest rate, and the term in months, split into equal payments that cover interest and principal.</p>
+        <h3>How do you calculate a monthly mortgage payment?</h3>
+        <p>It's based on the loan amount (price minus down payment), the annual interest rate, and the term in years, split into equal payments that cover interest and principal.</p>
       </div>
       <div class="faq-item">
-        <h3>What is a good interest rate for a car loan?</h3>
-        <p>It depends on your credit score, the loan term, and whether the car is new or used. Comparing several lenders is the best way to find a competitive rate.</p>
+        <h3>What is included in a mortgage payment besides principal and interest?</h3>
+        <p>Many homeowners also pay property tax and home insurance monthly, sometimes collected in escrow. Loans with a down payment under 20% often add private mortgage insurance (PMI) too.</p>
       </div>
       <div class="faq-item">
-        <h3>Does a bigger down payment lower my monthly payment?</h3>
-        <p>Yes ― a larger down payment shrinks the loan principal, which lowers both your monthly payment and the total interest paid.</p>
+        <h3>How does the loan term affect my payment?</h3>
+        <p>A longer term (30 years) lowers the monthly payment but increases total interest. A shorter term (15 years) raises the payment but costs less overall.</p>
       </div>
       <div class="faq-item">
-        <h3>Can the down payment be paid at the end of the loan instead?</h3>
-        <p>Yes ― this is a balloon payment structure. The full price is financed, monthly payments are lower, and the deferred down payment is due as one lump sum at the end of the term. Use the toggle above the calculator to try this option.</p>
+        <h3>How do I get rid of PMI on my mortgage?</h3>
+        <p>PMI is removed automatically once your balance reaches 78% of the home's original value, or you can request removal at 80%. Extra principal payments or a larger down payment both get you there sooner.</p>
       </div>
     </div>
   </article>
 
   <div class="cta-box">
-    <p>Want more loan types, saved calculations, and offline access?</p>
-    <a href="https://play.google.com/store/apps/details?id=com.loan.generator" target="_blank" rel="noopener">Get the LoanGenerators app</a>
+    <p>Want to see how a mortgage stacks up against your other loan payments?</p>
+    <a href="https://play.google.com/store/apps/details?id=com.loan.generator" target="_blank" rel="noopener">Plan your full budget in the LoanGenerators app</a>
   </div>
 
   <nav class="internal-links">
     <a href="/">Home</a>
-    <a href="/mortgage-calculator.html">Mortgage Calculator</a>
+    <a href="/car-loan-calculator.html">Car Loan Calculator</a>
     <a href="/personal-loan-calculator.html">Personal Loan Calculator</a>
   </nav>
 
@@ -364,62 +367,41 @@
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  function calculateCarLoan() {
-    const price = parseFloat(document.getElementById('carPrice').value) || 0;
+  function calculateMortgage() {
+    const price = parseFloat(document.getElementById('homePrice').value) || 0;
     const down = parseFloat(document.getElementById('downPayment').value) || 0;
     const annualRate = parseFloat(document.getElementById('interestRate').value) || 0;
-    const months = parseInt(document.getElementById('loanTerm').value) || 1;
-    const downTiming = document.querySelector('input[name="downTiming"]:checked').value;
+    const years = parseInt(document.getElementById('loanTerm').value) || 1;
+    const annualTax = parseFloat(document.getElementById('propertyTax').value) || 0;
+    const annualInsurance = parseFloat(document.getElementById('homeInsurance').value) || 0;
 
+    const principal = Math.max(price - down, 0);
+    const months = years * 12;
     const monthlyRate = (annualRate / 100) / 12;
-    const fmt = (n) => '$' + n.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-    let principal, monthlyPayment, balloon, totalInterest, totalCost;
-    const balloonRow = document.getElementById('rBalloonRow');
-
-    if (downTiming === 'start') {
-      // Classic structure: down payment reduces the amount financed up front.
-      principal = Math.max(price - down, 0);
-      balloon = 0;
-
-      if (monthlyRate === 0) {
-        monthlyPayment = principal / months;
-      } else {
-        monthlyPayment = principal *
-          (monthlyRate * Math.pow(1 + monthlyRate, months)) /
-          (Math.pow(1 + monthlyRate, months) - 1);
-      }
-
-      totalCost = monthlyPayment * months + down;
-      totalInterest = totalCost - price;
-      balloonRow.style.display = 'none';
-
+    let monthlyPI;
+    if (monthlyRate === 0) {
+      monthlyPI = principal / months;
     } else {
-      // Balloon structure: the "down payment" is deferred and paid as a lump sum
-      // at the end. The full car price is financed; monthly payments only need
-      // to amortize (price - PV of the balloon), with the balloon itself due at term end.
-      principal = price;
-      balloon = down;
-
-      if (monthlyRate === 0) {
-        monthlyPayment = (principal - balloon) / months;
-      } else {
-        const pvBalloon = balloon / Math.pow(1 + monthlyRate, months);
-        monthlyPayment = (principal - pvBalloon) *
-          (monthlyRate * Math.pow(1 + monthlyRate, months)) /
-          (Math.pow(1 + monthlyRate, months) - 1);
-      }
-
-      totalCost = monthlyPayment * months + balloon;
-      totalInterest = totalCost - price;
-      document.getElementById('rBalloon').textContent = fmt(balloon);
-      balloonRow.style.display = 'flex';
+      monthlyPI = principal *
+        (monthlyRate * Math.pow(1 + monthlyRate, months)) /
+        (Math.pow(1 + monthlyRate, months) - 1);
     }
 
-    document.getElementById('rMonthly').textContent = fmt(monthlyPayment);
+    const monthlyTax = annualTax / 12;
+    const monthlyInsurance = annualInsurance / 12;
+    const totalMonthly = monthlyPI + monthlyTax + monthlyInsurance;
+
+    const totalInterest = (monthlyPI * months) - principal;
+
+    const fmt = (n) => '$' + n.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+    document.getElementById('rPI').textContent = fmt(monthlyPI);
+    document.getElementById('rTax').textContent = fmt(monthlyTax);
+    document.getElementById('rIns').textContent = fmt(monthlyInsurance);
+    document.getElementById('rMonthly').textContent = fmt(totalMonthly);
     document.getElementById('rPrincipal').textContent = fmt(principal);
     document.getElementById('rInterest').textContent = fmt(Math.max(totalInterest, 0));
-    document.getElementById('rTotal').textContent = fmt(totalCost);
 
     document.getElementById('resultBox').classList.add('show');
   }
