@@ -5,16 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- ===== SEO META TAGS ===== -->
-<title>Personal Loan Calculator - Monthly Payment & Interest Calculator | LoanGenerators</title>
-<meta name="description" content="Free personal loan calculator. Estimate your monthly payment, total interest, and total repayment cost in seconds. Works for any unsecured personal loan.">
-<meta name="keywords" content="personal loan calculator, unsecured loan calculator, monthly loan payment calculator, personal loan interest calculator, loan repayment calculator">
-<link rel="canonical" href="https://loangenerators.com/personal-loan-calculator.html">
+<title>Car Loan Calculator - Monthly Payment & Interest Calculator | LoanGenerators</title>
+<meta name="description" content="Free car loan calculator. Estimate your monthly car payment, total interest, and full amortization schedule in seconds. Works for new and used car loans.">
+<meta name="keywords" content="car loan calculator, auto loan calculator, monthly car payment calculator, car finance calculator, vehicle loan calculator">
+<link rel="canonical" href="https://loangenerators.com/car-loan-calculator.html">
 
 <!-- ===== OPEN GRAPH ===== -->
-<meta property="og:title" content="Personal Loan Calculator - Monthly Payment & Interest Calculator">
-<meta property="og:description" content="Estimate your monthly personal loan payment, total interest, and total cost for free.">
+<meta property="og:title" content="Car Loan Calculator - Monthly Payment & Interest Calculator">
+<meta property="og:description" content="Estimate your monthly car payment, total interest, and amortization schedule for free.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://loangenerators.com/personal-loan-calculator.html">
+<meta property="og:url" content="https://loangenerators.com/car-loan-calculator.html">
 <meta property="og:site_name" content="LoanGenerators">
 
 <!-- ===== JSON-LD: WebApplication ===== -->
@@ -22,8 +22,8 @@
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Personal Loan Calculator",
-  "url": "https://loangenerators.com/personal-loan-calculator.html",
+  "name": "Car Loan Calculator",
+  "url": "https://loangenerators.com/car-loan-calculator.html",
   "applicationCategory": "FinanceApplication",
   "operatingSystem": "Any",
   "offers": {
@@ -47,34 +47,34 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "How do you calculate a personal loan payment?",
+      "name": "How do you calculate a car loan payment?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "A personal loan payment is calculated from the loan amount, the annual interest rate, and the loan term in months. The loan is split into equal monthly payments that cover both principal and interest, so early payments are interest-heavy and later payments pay down more principal."
+        "text": "A car loan payment is calculated using the loan amount (vehicle price minus down payment), the annual interest rate, and the loan term in months. The formula divides the loan into equal monthly payments that cover both principal and interest, so early payments are interest-heavy and later payments pay down more principal."
       }
     },
     {
       "@type": "Question",
-      "name": "What is a good interest rate for a personal loan?",
+      "name": "What is a good interest rate for a car loan?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Personal loan interest rates vary widely based on credit score, income, loan term, and whether the loan is secured or unsecured. Borrowers with strong credit typically qualify for the lowest rates. It's best to compare offers from several lenders before signing."
+        "text": "Car loan interest rates vary by credit score, loan term, and whether the car is new or used. Shorter terms and stronger credit typically qualify for lower rates. It's best to compare offers from several lenders before signing."
       }
     },
     {
       "@type": "Question",
-      "name": "Does an origination fee affect how much I actually receive?",
+      "name": "Does a bigger down payment lower my monthly car payment?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Many personal loans deduct an origination fee from the loan amount before disbursing funds, so the cash you actually receive is lower than the amount you're repaying. Monthly payments are still calculated on the full loan amount."
+        "text": "Yes. A larger down payment reduces the loan principal, which lowers both the monthly payment and the total interest paid over the life of the loan."
       }
     },
     {
       "@type": "Question",
-      "name": "Is it better to choose a shorter or longer loan term?",
+      "name": "Can the down payment be paid at the end of the loan instead of the start?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "A shorter term means higher monthly payments but less total interest paid. A longer term lowers the monthly payment but increases the total interest over the life of the loan. The right choice depends on your monthly budget versus your goal of minimizing total cost."
+        "text": "Yes, this is known as a balloon payment structure. The full vehicle price is financed, monthly payments are lower because they only cover part of the principal, and the deferred down payment amount is due as a single lump sum at the end of the loan term."
       }
     }
   ]
@@ -179,6 +179,23 @@
   .result-row:last-child { border-bottom: none; }
   .result-row strong { color: var(--primary-dark); }
 
+  .toggle-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .toggle-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--text);
+    cursor: pointer;
+  }
+  .toggle-option input { width: auto; }
+
   article h2 { font-size: 1.3rem; margin-top: 40px; }
   article p { color: var(--text); }
   .faq { margin-top: 12px; }
@@ -226,43 +243,57 @@
 <body>
 
 <header>
-  <h1>Personal Loan Calculator</h1>
-  <p>Estimate your monthly payment and total interest in seconds</p>
+  <h1>Car Loan Calculator</h1>
+  <p>Estimate your monthly car payment and total interest in seconds</p>
 </header>
 
 <nav class="breadcrumb">
-  <a href="/">Home</a> &raquo; Personal Loan Calculator
+  <a href="/">Home</a> &raquo; Car Loan Calculator
 </nav>
 
 <main>
 
   <!-- ===== CALCULATOR ===== -->
-  <section class="calculator-card" aria-label="Personal loan calculator">
+  <section class="calculator-card" aria-label="Car loan calculator">
     <div class="grid-2">
       <div class="field">
-        <label for="loanAmount">Loan amount ($)</label>
-        <input type="number" id="loanAmount" value="10000" min="0">
+        <label for="carPrice">Car price ($)</label>
+        <input type="number" id="carPrice" value="25000" min="0">
       </div>
       <div class="field">
-        <label for="originationFee">Origination fee (%)</label>
-        <input type="number" id="originationFee" value="0" min="0" step="0.01">
+        <label for="downPayment">Down payment ($)</label>
+        <input type="number" id="downPayment" value="3000" min="0">
       </div>
       <div class="field">
         <label for="interestRate">Annual interest rate (%)</label>
-        <input type="number" id="interestRate" value="9.5" min="0" step="0.01">
+        <input type="number" id="interestRate" value="6.5" min="0" step="0.01">
       </div>
       <div class="field">
         <label for="loanTerm">Loan term (months)</label>
-        <input type="number" id="loanTerm" value="36" min="1">
+        <input type="number" id="loanTerm" value="60" min="1">
       </div>
     </div>
 
-    <button class="calc-btn" onclick="calculatePersonalLoan()">Calculate Payment</button>
+    <div class="field">
+      <label>When is the down payment paid?</label>
+      <div class="toggle-group">
+        <label class="toggle-option">
+          <input type="radio" name="downTiming" value="start" checked>
+          At the start (reduces principal now)
+        </label>
+        <label class="toggle-option">
+          <input type="radio" name="downTiming" value="end">
+          At the end (balloon payment)
+        </label>
+      </div>
+    </div>
+
+    <button class="calc-btn" onclick="calculateCarLoan()">Calculate Payment</button>
 
     <div class="result" id="resultBox">
       <div class="result-row"><span>Monthly payment</span><strong id="rMonthly">-</strong></div>
-      <div class="result-row"><span>Origination fee</span><strong id="rFee">-</strong></div>
-      <div class="result-row"><span>Cash you receive</span><strong id="rNetProceeds">-</strong></div>
+      <div class="result-row" id="rBalloonRow" style="display:none;"><span>Final balloon payment (due at end)</span><strong id="rBalloon">-</strong></div>
+      <div class="result-row"><span>Amount financed</span><strong id="rPrincipal">-</strong></div>
       <div class="result-row"><span>Total interest paid</span><strong id="rInterest">-</strong></div>
       <div class="result-row"><span>Total cost of loan</span><strong id="rTotal">-</strong></div>
     </div>
@@ -274,54 +305,69 @@
 
   <!-- ===== EXPLANATORY CONTENT (SEO) ===== -->
   <article>
-    <h2>How personal loan payments are calculated</h2>
+    <h2>Worked example: financing a $25,000 car</h2>
     <p>
-      A personal loan is a fixed-term (amortizing) loan: you borrow a lump sum and repay it in equal monthly
-      installments that include both principal and interest. Early in the loan, more of each payment goes toward
-      interest; over time, more goes toward paying down the principal. The three numbers that matter most are the
-      loan amount, the annual interest rate, and the loan term ― a longer term lowers your monthly payment but
-      increases the total interest you pay over the life of the loan.
+      Say you're buying a $25,000 car with a $3,000 down payment, financed at 6.5% APR
+      over 60 months. You'd be borrowing $22,000, which works out to a monthly payment
+      of about $430. Over the five-year term you'd pay roughly $3,800 in interest, bringing
+      the total cost of the car (including your down payment) to about $28,800 — meaning
+      financing adds about 15% on top of the sticker price. Change the term to 36 months
+      instead, and the monthly payment jumps to around $674, but total interest drops to
+      about $2,270 — over $1,500 less, just from paying it off faster.
     </p>
 
-    <h2>Tips for getting a better personal loan</h2>
+    <h2>New car loans vs. used car loans</h2>
     <p>
-      Personal loans are usually unsecured, so lenders lean heavily on your credit score and income when setting
-      your rate ― improving your credit before applying can meaningfully lower your cost. Watch for origination
-      fees, which are often deducted from the loan upfront, meaning the cash you receive is less than the amount
-      you're repaying. It's also worth comparing pre-qualified offers from several lenders, since rates and fees
-      can vary significantly for the same borrower.
+      Lenders generally charge lower rates on new cars than used ones, since a new car
+      holds its value more predictably and is easier to repossess and resell if a borrower
+      defaults. It's common to see used-car rates run 1-3 percentage points higher than
+      new-car rates for the same borrower. Used car loans are also more likely to be capped
+      at shorter terms — many lenders won't finance a used car past 60-66 months, since the
+      vehicle's remaining useful life is shorter. If you're deciding between a slightly
+      cheaper used car and a new one, run both scenarios through the calculator above —
+      the rate difference sometimes narrows the gap more than expected.
+    </p>
+
+    <h2>Getting a better rate</h2>
+    <p>
+      Dealership financing is convenient but rarely the cheapest option — dealers often mark
+      up the rate they get from a lender before passing it to you. Getting pre-approved by a
+      bank or credit union before you shop gives you a real number to negotiate against, and
+      dealers will sometimes beat it to win your financing business. A larger down payment
+      and a shorter term both reduce total interest, but the trade-off is a higher monthly
+      payment — use the calculator above to see exactly where that balance sits for your budget.
     </p>
 
     <h2>Frequently asked questions</h2>
     <div class="faq">
       <div class="faq-item">
-        <h3>How do you calculate a personal loan payment?</h3>
-        <p>It's based on the loan amount, the annual interest rate, and the term in months, split into equal payments that cover interest and principal.</p>
+        <h3>How do you calculate a car loan payment?</h3>
+        <p>It's based on the loan amount (price minus down payment), the annual interest rate, and the term in months, split into equal payments that cover interest and principal.</p>
       </div>
       <div class="faq-item">
-        <h3>What is a good interest rate for a personal loan?</h3>
-        <p>It depends on your credit score, income, loan term, and whether the loan is secured or unsecured. Comparing several lenders is the best way to find a competitive rate.</p>
+        <h3>What is a good interest rate for a car loan?</h3>
+        <p>It depends on your credit score, the loan term, and whether the car is new or used. Comparing several lenders is the best way to find a competitive rate.</p>
       </div>
       <div class="faq-item">
-        <h3>Does an origination fee affect how much I actually receive?</h3>
-        <p>Yes ― many lenders deduct the fee from the loan amount before disbursing funds, so your net proceeds are lower than the amount you're repaying.</p>
+        <h3>Does a bigger down payment lower my monthly payment?</h3>
+        <p>Yes ― a larger down payment shrinks the loan principal, which lowers both your monthly payment and the total interest paid.</p>
       </div>
       <div class="faq-item">
-        <h3>Is it better to choose a shorter or longer loan term?</h3>
-        <p>A shorter term means higher monthly payments but less total interest. A longer term lowers the monthly payment but costs more overall.</p>
+        <h3>Can the down payment be paid at the end of the loan instead?</h3>
+        <p>Yes ― this is a balloon payment structure. The full price is financed, monthly payments are lower, and the deferred down payment is due as one lump sum at the end of the term. Use the toggle above the calculator to try this option.</p>
       </div>
     </div>
   </article>
 
   <div class="cta-box">
-    <p>Want more loan types, saved calculations, and offline access?</p>
-    <a href="https://play.google.com/store/apps/details?id=com.loan.generator" target="_blank" rel="noopener">Get the LoanGenerators app</a>
+    <p>Want to run a car loan alongside a mortgage or personal loan side by side?</p>
+    <a href="https://play.google.com/store/apps/details?id=com.loan.generator" target="_blank" rel="noopener">Compare loans in the LoanGenerators app</a>
   </div>
 
   <nav class="internal-links">
     <a href="/">Home</a>
-    <a href="/car-loan-calculator.html">Car Loan Calculator</a>
     <a href="/mortgage-calculator.html">Mortgage Calculator</a>
+    <a href="/personal-loan-calculator.html">Personal Loan Calculator</a>
   </nav>
 
 </main>
@@ -333,32 +379,60 @@
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  function calculatePersonalLoan() {
-    const amount = parseFloat(document.getElementById('loanAmount').value) || 0;
-    const feePct = parseFloat(document.getElementById('originationFee').value) || 0;
+  function calculateCarLoan() {
+    const price = parseFloat(document.getElementById('carPrice').value) || 0;
+    const down = parseFloat(document.getElementById('downPayment').value) || 0;
     const annualRate = parseFloat(document.getElementById('interestRate').value) || 0;
     const months = parseInt(document.getElementById('loanTerm').value) || 1;
+    const downTiming = document.querySelector('input[name="downTiming"]:checked').value;
 
     const monthlyRate = (annualRate / 100) / 12;
     const fmt = (n) => '$' + n.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-    let monthlyPayment;
-    if (monthlyRate === 0) {
-      monthlyPayment = amount / months;
+    let principal, monthlyPayment, balloon, totalInterest, totalCost;
+    const balloonRow = document.getElementById('rBalloonRow');
+
+    if (downTiming === 'start') {
+      // Classic structure: down payment reduces the amount financed up front.
+      principal = Math.max(price - down, 0);
+      balloon = 0;
+
+      if (monthlyRate === 0) {
+        monthlyPayment = principal / months;
+      } else {
+        monthlyPayment = principal *
+          (monthlyRate * Math.pow(1 + monthlyRate, months)) /
+          (Math.pow(1 + monthlyRate, months) - 1);
+      }
+
+      totalCost = monthlyPayment * months + down;
+      totalInterest = totalCost - price;
+      balloonRow.style.display = 'none';
+
     } else {
-      monthlyPayment = amount *
-        (monthlyRate * Math.pow(1 + monthlyRate, months)) /
-        (Math.pow(1 + monthlyRate, months) - 1);
+      // Balloon structure: the "down payment" is deferred and paid as a lump sum
+      // at the end. The full car price is financed; monthly payments only need
+      // to amortize (price - PV of the balloon), with the balloon itself due at term end.
+      principal = price;
+      balloon = down;
+
+      if (monthlyRate === 0) {
+        monthlyPayment = (principal - balloon) / months;
+      } else {
+        const pvBalloon = balloon / Math.pow(1 + monthlyRate, months);
+        monthlyPayment = (principal - pvBalloon) *
+          (monthlyRate * Math.pow(1 + monthlyRate, months)) /
+          (Math.pow(1 + monthlyRate, months) - 1);
+      }
+
+      totalCost = monthlyPayment * months + balloon;
+      totalInterest = totalCost - price;
+      document.getElementById('rBalloon').textContent = fmt(balloon);
+      balloonRow.style.display = 'flex';
     }
 
-    const fee = amount * (feePct / 100);
-    const netProceeds = amount - fee;
-    const totalCost = monthlyPayment * months;
-    const totalInterest = totalCost - amount;
-
     document.getElementById('rMonthly').textContent = fmt(monthlyPayment);
-    document.getElementById('rFee').textContent = fmt(fee);
-    document.getElementById('rNetProceeds').textContent = fmt(netProceeds);
+    document.getElementById('rPrincipal').textContent = fmt(principal);
     document.getElementById('rInterest').textContent = fmt(Math.max(totalInterest, 0));
     document.getElementById('rTotal').textContent = fmt(totalCost);
 
