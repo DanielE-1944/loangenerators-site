@@ -210,14 +210,27 @@ footer p{font-size:12px;color:var(--muted)}
 
 <!-- THUMBNAIL STRIP -->
 <div class="thumb-strip">
-  <img src="/repayment-schedule.png" alt="Repayment schedule screenshot" onclick="document.getElementById('lightbox').classList.add('active')" />
+  <img src="/repayment-schedule.png" alt="Repayment schedule screenshot" onclick="openLightbox()" />
   <p>Tap to see the full repayment schedule</p>
 </div>
 
-<div class="lightbox-overlay" id="lightbox" onclick="this.classList.remove('active')">
+<div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
   <span class="lightbox-close">&times;</span>
   <img src="/repayment-schedule.png" alt="Repayment schedule screenshot, full size" />
 </div>
+
+<script>
+  function openLightbox() {
+    var vp = document.querySelector('meta[name="viewport"]');
+    if (vp) { vp.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'); }
+    document.getElementById('lightbox').classList.add('active');
+  }
+  function closeLightbox() {
+    var vp = document.querySelector('meta[name="viewport"]');
+    if (vp) { vp.setAttribute('content', 'width=device-width, initial-scale=1.0'); }
+    document.getElementById('lightbox').classList.remove('active');
+  }
+</script>
 
 <!-- HERO -->
 <section class="hero">
