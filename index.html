@@ -868,6 +868,22 @@ h2{
   background:var(--green-light)
 }
 
+/* OFFICIAL GOOGLE PLAY BADGE */
+.play-badge{
+  display:inline-block;
+  line-height:0
+}
+
+.play-badge img{
+  display:block;
+  height:54px;
+  width:auto
+}
+
+.play-badge.small img{
+  height:38px
+}
+
 /* FOOTER */
 footer{
   padding:36px 44px;
@@ -1260,12 +1276,9 @@ footer p{
 
 <a href="https://play.google.com/store/apps/details?id=com.loan.generator"
   target="_blank"
-  class="nav-cta">
-
-  <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
-    <path d="M3 20.5v-17l18 8.5-18 8.5zm2-3.5 11.5-5L5 7v10z"/>
-  </svg>
-  Get the App
+  class="play-badge small"
+  aria-label="Get it on Google Play">
+  <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" />
   </a>
 </nav>
 
@@ -1780,10 +1793,10 @@ window.addEventListener("resize",function(){
     </h1>
 
     <p>
-      LoanGenerators now showcases the real Android experience —
-      including loan simulation, break-even analytics, and
-      side-by-side loan comparison screens directly inspired
-      by the Play Store app.
+      These panels illustrate what LoanGenerators can do —
+      the same loan simulation, break-even analytics, and
+      side-by-side loan comparison features you'll find
+      after you install it from Google Play.
     </p>
 
     <div class="hero-btns">
@@ -1791,17 +1804,9 @@ window.addEventListener("resize",function(){
       <a
         href="https://play.google.com/store/apps/details?id=com.loan.generator"
         target="_blank"
-        class="play-btn">
-
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
-          <path d="M3 20.5v-17l18 8.5-18 8.5zm2-3.5 11.5-5L5 7v10z"/>
-        </svg>
-
-        <div class="play-btn-text">
-          <small>Download on</small>
-          <strong>Google Play</strong>
-        </div>
-
+        class="play-badge"
+        aria-label="Get it on Google Play">
+        <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" />
       </a>
 
       <a href="#features" class="btn-outline">
@@ -2348,25 +2353,9 @@ window.addEventListener("resize",function(){
       <a
         href="https://play.google.com/store/apps/details?id=com.loan.generator"
         target="_blank"
-        class="play-btn-lg">
-
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="#039BE5">
-          <path d="M3 20.5v-17l18 8.5-18 8.5zm2-3.5 11.5-5L5 7v10z"/>
-        </svg>
-
-        <div class="play-btn-text">
-
-          <small
-            style="font-size:10px;color:#6b7f95;text-transform:uppercase;letter-spacing:.5px;font-weight:400">
-            Get it on
-          </small>
-
-          <strong style="font-size:16px;color:var(--navy)">
-            Google Play
-          </strong>
-
-        </div>
-
+        class="play-badge"
+        aria-label="Get it on Google Play">
+        <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" />
       </a>
 
     </div>
@@ -2586,33 +2575,9 @@ window.addEventListener("resize",function(){
 <a
  href="https://play.google.com/store/apps/details?id=com.loan.generator"
  target="_blank"
- class="cta-play-btn">
-
-    <svg
-      width="22"
-      height="22"
-      viewBox="0 0 24 24"
-      fill="var(--navy)">
-
-      <path d="M3 20.5v-17l18 8.5-18 8.5zm2-3.5 11.5-5L5 7v10z"/>
-
-    </svg>
-
-    <div
-      class="play-btn-text"
-      style="color:var(--navy)">
-
-      <small
-        style="opacity:.6;font-size:10px;text-transform:uppercase;letter-spacing:.5px">
-        Download free on
-      </small>
-
-      <strong style="font-size:15px">
-        Google Play
-      </strong>
-
-    </div>
-
+ class="play-badge"
+ aria-label="Get it on Google Play">
+    <img src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" alt="Get it on Google Play" />
   </a>
 
 </section>
