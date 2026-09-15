@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
@@ -1100,6 +1099,53 @@ footer p{
   background:rgba(255,255,255,.1)
 }
 
+/* MORE CALCULATORS */
+.more-calc{
+  background:var(--bg);
+  border-top:1px solid var(--border)
+}
+
+.calc-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px
+}
+
+.calc-card{
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:22px;
+  text-decoration:none;
+  display:block;
+  transition:border-color .2s,transform .2s
+}
+
+.calc-card:hover{
+  border-color:var(--green);
+  transform:translateY(-2px)
+}
+
+.calc-card h3{
+  font-size:15.5px;
+  font-weight:700;
+  color:var(--navy);
+  margin-bottom:7px
+}
+
+.calc-card p{
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.6;
+  margin-bottom:10px
+}
+
+.calc-card span.calc-link{
+  font-size:13px;
+  font-weight:600;
+  color:var(--green-dark)
+}
+
 /* MOBILE */
 @media(max-width:768px){
 
@@ -1133,7 +1179,8 @@ footer p{
   }
 
   .feature-grid,
-  .testi-grid{
+  .testi-grid,
+  .calc-grid{
     grid-template-columns:1fr
   }
 
@@ -1207,6 +1254,7 @@ footer p{
     <li><a href="#features">Features</a></li>
     <li><a href="#schedule">Calculator</a></li>
     <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#more-calculators">More Calculators</a></li>
     <li><a href="#download">Download</a></li>
   </ul>
 
@@ -1214,14 +1262,10 @@ footer p{
   target="_blank"
   class="nav-cta">
 
-```
-<svg width="16" height="16" viewBox="0 0 24 24" fill="white">
-  <path d="M3 20.5v-17l18 8.5-18 8.5zm2-3.5 11.5-5L5 7v10z"/>
-</svg>
-
-Get the App
-```
-
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
+    <path d="M3 20.5v-17l18 8.5-18 8.5zm2-3.5 11.5-5L5 7v10z"/>
+  </svg>
+  Get the App
   </a>
 </nav>
 
@@ -1248,19 +1292,17 @@ Get the App
  type="button"
  onclick="closeLightbox(event)"
  aria-label="Close image">
-× </button>
+&times; </button>
 
   <div
     class="lightbox-image-container"
     id="imageContainer">
 
-```
-<img
-  id="lightboxImage"
-  src="/repayment-schedule.png"
-  alt="Repayment schedule screenshot, full size"
-/>
-```
+    <img
+      id="lightboxImage"
+      src="/repayment-schedule.png"
+      alt="Repayment schedule screenshot, full size"
+    />
 
   </div>
 
@@ -1268,47 +1310,45 @@ Get the App
 
   <div class="image-controls">
 
-```
-<button
-  type="button"
-  class="image-control-btn"
-  onclick="changeImageSize(-0.15)"
-  aria-label="Make image smaller">
-  −
-</button>
+    <button
+      type="button"
+      class="image-control-btn"
+      onclick="changeImageSize(-0.15)"
+      aria-label="Make image smaller">
+      &minus;
+    </button>
 
-<input
-  id="imageSizeSlider"
-  class="image-size-slider"
-  type="range"
-  min="0.25"
-  max="2.5"
-  step="0.05"
-  value="1"
-  aria-label="Image size"
-/>
+    <input
+      id="imageSizeSlider"
+      class="image-size-slider"
+      type="range"
+      min="0.25"
+      max="2.5"
+      step="0.05"
+      value="1"
+      aria-label="Image size"
+    />
 
-<button
-  type="button"
-  class="image-control-btn"
-  onclick="changeImageSize(0.15)"
-  aria-label="Make image larger">
-  +
-</button>
+    <button
+      type="button"
+      class="image-control-btn"
+      onclick="changeImageSize(0.15)"
+      aria-label="Make image larger">
+      +
+    </button>
 
-<span
-  id="imageSizeLabel"
-  class="image-size-label">
-  100%
-</span>
+    <span
+      id="imageSizeLabel"
+      class="image-size-label">
+      100%
+    </span>
 
-<button
-  type="button"
-  class="image-reset"
-  onclick="resetImageSize()">
-  Reset
-</button>
-```
+    <button
+      type="button"
+      class="image-reset"
+      onclick="resetImageSize()">
+      Reset
+    </button>
 
   </div>
 
@@ -1729,319 +1769,314 @@ window.addEventListener("resize",function(){
 
   <div class="hero-text">
 
-```
-<div class="badge">
-  <span class="badge-dot"></span>
-  Free on Google Play
-</div>
-
-<h1>
-  Loan calculator for
-  <em>real financial decisions</em>
-</h1>
-
-<p>
-  LoanGenerators now showcases the real Android experience —
-  including loan simulation, break-even analytics, and
-  side-by-side loan comparison screens directly inspired
-  by the Play Store app.
-</p>
-
-<div class="hero-btns">
-
-  <a
-    href="https://play.google.com/store/apps/details?id=com.loan.generator"
-    target="_blank"
-    class="play-btn">
-
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
-      <path d="M3 20.5v-17l18 8.5-18 8.5zm2-3.5 11.5-5L5 7v10z"/>
-    </svg>
-
-    <div class="play-btn-text">
-      <small>Download on</small>
-      <strong>Google Play</strong>
+    <div class="badge">
+      <span class="badge-dot"></span>
+      Free on Google Play
     </div>
 
-  </a>
+    <h1>
+      Loan calculator for
+      <em>real financial decisions</em>
+    </h1>
 
-  <a href="#features" class="btn-outline">
-    Explore Features
-  </a>
+    <p>
+      LoanGenerators now showcases the real Android experience —
+      including loan simulation, break-even analytics, and
+      side-by-side loan comparison screens directly inspired
+      by the Play Store app.
+    </p>
 
-</div>
-```
+    <div class="hero-btns">
 
+      <a
+        href="https://play.google.com/store/apps/details?id=com.loan.generator"
+        target="_blank"
+        class="play-btn">
+
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+          <path d="M3 20.5v-17l18 8.5-18 8.5zm2-3.5 11.5-5L5 7v10z"/>
+        </svg>
+
+        <div class="play-btn-text">
+          <small>Download on</small>
+          <strong>Google Play</strong>
+        </div>
+
+      </a>
+
+      <a href="#features" class="btn-outline">
+        Explore Features
+      </a>
+
+    </div>
   </div>
 
   <div class="hero-app-showcase">
 
-```
-<!-- SCREEN 1 -->
-<div class="app-phone">
+    <!-- SCREEN 1 -->
+    <div class="app-phone">
 
-  <div class="app-phone-screen">
+      <div class="app-phone-screen">
 
-    <div class="screen-top">
-      <div style="font-size:11px;opacity:.8">
-        LoanGenerators
-      </div>
+        <div class="screen-top">
+          <div style="font-size:11px;opacity:.8">
+            LoanGenerators
+          </div>
 
-      <div class="screen-title">
-        Loan Simulator
-      </div>
-    </div>
-
-    <div class="screen-content">
-
-      <div class="loan-card">
-        <h4>Mortgage Amount</h4>
-        <div class="loan-value">$1,000,000</div>
-      </div>
-
-      <div class="loan-card">
-        <h4>Interest Rate</h4>
-        <div style="font-size:22px;font-weight:700;color:var(--navy)">
-          4.2%
-        </div>
-      </div>
-
-      <div class="loan-card">
-        <h4>Monthly Payment</h4>
-        <div class="loan-value">$6,165</div>
-      </div>
-
-      <div class="mini-schedule">
-        <div class="sched-row">
-          <span>Principal</span>
-          <span>$3,550</span>
+          <div class="screen-title">
+            Loan Simulator
+          </div>
         </div>
 
-        <div class="sched-row">
-          <span>Interest</span>
-          <span>$2,615</span>
-        </div>
+        <div class="screen-content">
 
-        <div class="sched-row">
-          <span>Loan Term</span>
-          <span>7 Years</span>
-        </div>
-      </div>
+          <div class="loan-card">
+            <h4>Mortgage Amount</h4>
+            <div class="loan-value">$1,000,000</div>
+          </div>
 
-    </div>
+          <div class="loan-card">
+            <h4>Interest Rate</h4>
+            <div style="font-size:22px;font-weight:700;color:var(--navy)">
+              4.2%
+            </div>
+          </div>
 
-  </div>
+          <div class="loan-card">
+            <h4>Monthly Payment</h4>
+            <div class="loan-value">$6,165</div>
+          </div>
 
-</div>
+          <div class="mini-schedule">
+            <div class="sched-row">
+              <span>Principal</span>
+              <span>$3,550</span>
+            </div>
 
+            <div class="sched-row">
+              <span>Interest</span>
+              <span>$2,615</span>
+            </div>
 
-<!-- SCREEN 2 -->
-<div class="app-phone center">
+            <div class="sched-row">
+              <span>Loan Term</span>
+              <span>7 Years</span>
+            </div>
+          </div>
 
-  <div class="app-phone-screen">
-
-    <div class="screen-top">
-      <div style="font-size:11px;opacity:.8">
-        Analytics
-      </div>
-
-      <div class="screen-title">
-        Break-Even Chart
-      </div>
-    </div>
-
-    <div class="screen-content">
-
-      <div class="loan-card">
-        <h4>Break-even reached</h4>
-
-        <div class="loan-value">
-          Year 7
-        </div>
-
-        <div style="font-size:12px;color:var(--muted)">
-          Principal paid becomes higher than interest
-        </div>
-      </div>
-
-      <div class="chart-box">
-        <div class="chart-line1"></div>
-        <div class="chart-line2"></div>
-      </div>
-
-      <div class="mini-schedule">
-
-        <div class="sched-row">
-          <span>Total Principal</span>
-          <span>$640K</span>
-        </div>
-
-        <div class="sched-row">
-          <span>Total Interest</span>
-          <span>$210K</span>
-        </div>
-
-        <div class="sched-row">
-          <span>Balance Left</span>
-          <span>$743K</span>
         </div>
 
       </div>
 
     </div>
 
-  </div>
 
-</div>
+    <!-- SCREEN 2 -->
+    <div class="app-phone center">
 
+      <div class="app-phone-screen">
 
-<!-- SCREEN 3 -->
-<div class="app-phone">
+        <div class="screen-top">
+          <div style="font-size:11px;opacity:.8">
+            Analytics
+          </div>
 
-  <div class="app-phone-screen">
-
-    <div class="screen-top">
-
-      <div style="font-size:11px;opacity:.8">
-        Comparison
-      </div>
-
-      <div class="screen-title">
-        Loan Comparison
-      </div>
-
-    </div>
-
-    <div class="screen-content">
-
-      <div class="compare-row">
-
-        <div>
-          <strong>Bank A</strong><br/>
-          <span style="color:var(--muted)">
-            4.2% fixed
-          </span>
+          <div class="screen-title">
+            Break-Even Chart
+          </div>
         </div>
 
-        <div class="badge-win">
-          Best Deal
-        </div>
+        <div class="screen-content">
 
-      </div>
+          <div class="loan-card">
+            <h4>Break-even reached</h4>
 
-      <div class="compare-row">
+            <div class="loan-value">
+              Year 7
+            </div>
 
-        <div>
-          <strong>Bank B</strong><br/>
-          <span style="color:var(--muted)">
-            5.5% variable
-          </span>
-        </div>
+            <div style="font-size:12px;color:var(--muted)">
+              Principal paid becomes higher than interest
+            </div>
+          </div>
 
-        <strong>$61K more</strong>
+          <div class="chart-box">
+            <div class="chart-line1"></div>
+            <div class="chart-line2"></div>
+          </div>
 
-      </div>
+          <div class="mini-schedule">
 
-      <div class="compare-row">
+            <div class="sched-row">
+              <span>Total Principal</span>
+              <span>$640K</span>
+            </div>
 
-        <div>
-          <strong>Bank C</strong><br/>
-          <span style="color:var(--muted)">
-            part at 4.2% fixed interest and part at variable rate
-          </span>
-        </div>
+            <div class="sched-row">
+              <span>Total Interest</span>
+              <span>$210K</span>
+            </div>
 
-        <strong>$45K more</strong>
+            <div class="sched-row">
+              <span>Balance Left</span>
+              <span>$743K</span>
+            </div>
 
-      </div>
+          </div>
 
-      <div
-        class="loan-card"
-        style="margin-top:14px">
-
-        <h4>Estimated Savings</h4>
-
-        <div class="loan-value">
-          $45,000
         </div>
 
       </div>
 
     </div>
 
-  </div>
 
-</div>
+    <!-- SCREEN 3 -->
+    <div class="app-phone">
 
+      <div class="app-phone-screen">
 
-<!-- SCREEN 4 -->
-<div class="app-phone">
+        <div class="screen-top">
 
-  <div class="app-phone-screen">
+          <div style="font-size:11px;opacity:.8">
+            Comparison
+          </div>
 
-    <div class="screen-top">
+          <div class="screen-title">
+            Loan Comparison
+          </div>
 
-      <div style="font-size:11px;opacity:.8">
-        Amortization
-      </div>
+        </div>
 
-      <div class="screen-title">
-        Repayment Schedule
+        <div class="screen-content">
+
+          <div class="compare-row">
+
+            <div>
+              <strong>Bank A</strong><br/>
+              <span style="color:var(--muted)">
+                4.2% fixed
+              </span>
+            </div>
+
+            <div class="badge-win">
+              Best Deal
+            </div>
+
+          </div>
+
+          <div class="compare-row">
+
+            <div>
+              <strong>Bank B</strong><br/>
+              <span style="color:var(--muted)">
+                5.5% variable
+              </span>
+            </div>
+
+            <strong>$61K more</strong>
+
+          </div>
+
+          <div class="compare-row">
+
+            <div>
+              <strong>Bank C</strong><br/>
+              <span style="color:var(--muted)">
+                part at 4.2% fixed interest and part at variable rate
+              </span>
+            </div>
+
+            <strong>$45K more</strong>
+
+          </div>
+
+          <div
+            class="loan-card"
+            style="margin-top:14px">
+
+            <h4>Estimated Savings</h4>
+
+            <div class="loan-value">
+              $45,000
+            </div>
+
+          </div>
+
+        </div>
+
       </div>
 
     </div>
 
-    <div class="screen-content">
 
-      <div class="loan-card">
+    <!-- SCREEN 4 -->
+    <div class="app-phone">
 
-        <h4>
-          Interest / Principal Ratio
-        </h4>
+      <div class="app-phone-screen">
 
-        <div style="font-size:22px;font-weight:700;color:var(--navy)">
-          10.9% / 89.1%
+        <div class="screen-top">
+
+          <div style="font-size:11px;opacity:.8">
+            Amortization
+          </div>
+
+          <div class="screen-title">
+            Repayment Schedule
+          </div>
+
         </div>
 
-      </div>
+        <div class="screen-content">
 
-      <div class="loan-card">
+          <div class="loan-card">
 
-        <h4>
-          Break-Even Point
-        </h4>
+            <h4>
+              Interest / Principal Ratio
+            </h4>
 
-        <div class="loan-value">
-          Nov 2026
-        </div>
+            <div style="font-size:22px;font-weight:700;color:var(--navy)">
+              10.9% / 89.1%
+            </div>
 
-      </div>
+          </div>
 
-      <div class="mini-schedule">
+          <div class="loan-card">
 
-        <div class="sched-row">
-          <span>Line 0 · Sep 2026</span>
-          <span>I/P 207.9%</span>
-        </div>
+            <h4>
+              Break-Even Point
+            </h4>
 
-        <div class="sched-row">
-          <span>Line 1 · Oct 2026</span>
-          <span>I/P 8.0%</span>
-        </div>
+            <div class="loan-value">
+              Nov 2026
+            </div>
 
-        <div class="sched-row">
-          <span>Line 2 · Nov 2026</span>
-          <span>I/P 7.6%</span>
+          </div>
+
+          <div class="mini-schedule">
+
+            <div class="sched-row">
+              <span>Line 0 · Sep 2026</span>
+              <span>I/P 207.9%</span>
+            </div>
+
+            <div class="sched-row">
+              <span>Line 1 · Oct 2026</span>
+              <span>I/P 8.0%</span>
+            </div>
+
+            <div class="sched-row">
+              <span>Line 2 · Nov 2026</span>
+              <span>I/P 7.6%</span>
+            </div>
+
+          </div>
+
         </div>
 
       </div>
 
     </div>
-
-  </div>
-
-</div>
-```
 
   </div>
 
@@ -2073,13 +2108,11 @@ window.addEventListener("resize",function(){
 
   <div class="logo-row">
 
-```
-<span class="logo-item">FinanceHub</span>
-<span class="logo-item">CreditWise</span>
-<span class="logo-item">LoanPro</span>
-<span class="logo-item">BankSync</span>
-<span class="logo-item">MoneyMap</span>
-```
+    <span class="logo-item">FinanceHub</span>
+    <span class="logo-item">CreditWise</span>
+    <span class="logo-item">LoanPro</span>
+    <span class="logo-item">BankSync</span>
+    <span class="logo-item">MoneyMap</span>
 
   </div>
 
@@ -2104,61 +2137,59 @@ window.addEventListener("resize",function(){
 
   <div class="feature-grid">
 
-```
-<div class="feature-card">
-  <div class="feature-icon">📊</div>
-  <h3>Real-time simulation</h3>
-  <p>
-    Adjust loan amount, interest rate, and term on the fly
-    and see your payments update instantly as you go.
-  </p>
-</div>
+    <div class="feature-card">
+      <div class="feature-icon">📊</div>
+      <h3>Real-time simulation</h3>
+      <p>
+        Adjust loan amount, interest rate, and term on the fly
+        and see your payments update instantly as you go.
+      </p>
+    </div>
 
-<div class="feature-card">
-  <div class="feature-icon">📅</div>
-  <h3>Full payment schedule</h3>
-  <p>
-    See a breakdown of every payment — principal, interest,
-    and remaining balance — across the entire loan term.
-  </p>
-</div>
+    <div class="feature-card">
+      <div class="feature-icon">📅</div>
+      <h3>Full payment schedule</h3>
+      <p>
+        See a breakdown of every payment — principal, interest,
+        and remaining balance — across the entire loan term.
+      </p>
+    </div>
 
-<div class="feature-card">
-  <div class="feature-icon">🔁</div>
-  <h3>Compare loan options</h3>
-  <p>
-    Run multiple loan scenarios side by side to find
-    the deal that saves you the most over the long run.
-  </p>
-</div>
+    <div class="feature-card">
+      <div class="feature-icon">🔁</div>
+      <h3>Compare loan options</h3>
+      <p>
+        Run multiple loan scenarios side by side to find
+        the deal that saves you the most over the long run.
+      </p>
+    </div>
 
-<div class="feature-card">
-  <div class="feature-icon">💡</div>
-  <h3>Smart insights</h3>
-  <p>
-    Understand exactly how much interest you'll pay and when,
-    so you can plan early repayments wisely.
-  </p>
-</div>
+    <div class="feature-card">
+      <div class="feature-icon">💡</div>
+      <h3>Smart insights</h3>
+      <p>
+        Understand exactly how much interest you'll pay and when,
+        so you can plan early repayments wisely.
+      </p>
+    </div>
 
-<div class="feature-card">
-  <div class="feature-icon">📤</div>
-  <h3>Export &amp; share</h3>
-  <p>
-    Export your loan schedule as a PDF or share it directly
-    with your bank, broker, or financial advisor.
-  </p>
-</div>
+    <div class="feature-card">
+      <div class="feature-icon">📤</div>
+      <h3>Export &amp; share</h3>
+      <p>
+        Export your loan schedule as a PDF or share it directly
+        with your bank, broker, or financial advisor.
+      </p>
+    </div>
 
-<div class="feature-card">
-  <div class="feature-icon">🔒</div>
-  <h3>Private &amp; secure</h3>
-  <p>
-    No account required. Your loan data stays on your device —
-    we never store or share your financial details.
-  </p>
-</div>
-```
+    <div class="feature-card">
+      <div class="feature-icon">🔒</div>
+      <h3>Private &amp; secure</h3>
+      <p>
+        No account required. Your loan data stays on your device —
+        we never store or share your financial details.
+      </p>
+    </div>
 
   </div>
 
@@ -2198,103 +2229,99 @@ window.addEventListener("resize",function(){
     class="section-sub"
     style="margin-bottom:32px">
 
-```
-Here's a sample amortization table for a $1,000,000 loan
-at 4.2% APR over 240 months.
-```
+    Here's a sample amortization table for a $1,000,000 loan
+    at 4.2% APR over 240 months.
 
   </p>
 
   <div class="schedule-demo">
 
-```
-<table class="demo-table">
+    <table class="demo-table">
 
-  <thead>
+      <thead>
 
-    <tr>
-      <th>Month</th>
-      <th>Payment</th>
-      <th>Principal</th>
-      <th>Interest</th>
-      <th>Balance</th>
-      <th>Status</th>
-    </tr>
+        <tr>
+          <th>Month</th>
+          <th>Payment</th>
+          <th>Principal</th>
+          <th>Interest</th>
+          <th>Balance</th>
+          <th>Status</th>
+        </tr>
 
-  </thead>
+      </thead>
 
-  <tbody>
+      <tbody>
 
-    <tr>
-      <td>1</td>
-      <td>$6165.71</td>
-      <td>$2665.71</td>
-      <td>$3500.00</td>
-      <td>$997,334.29</td>
-      <td>
-        <span class="pill green">On track</span>
-      </td>
-    </tr>
+        <tr>
+          <td>1</td>
+          <td>$6165.71</td>
+          <td>$2665.71</td>
+          <td>$3500.00</td>
+          <td>$997,334.29</td>
+          <td>
+            <span class="pill green">On track</span>
+          </td>
+        </tr>
 
-    <tr>
-      <td>2</td>
-      <td>$6165.71</td>
-      <td>$2675.04</td>
-      <td>$3490.67</td>
-      <td>$994,659.26</td>
-      <td>
-        <span class="pill green">On track</span>
-      </td>
-    </tr>
+        <tr>
+          <td>2</td>
+          <td>$6165.71</td>
+          <td>$2675.04</td>
+          <td>$3490.67</td>
+          <td>$994,659.26</td>
+          <td>
+            <span class="pill green">On track</span>
+          </td>
+        </tr>
 
-    <tr>
-      <td>3</td>
-      <td>$6165.71</td>
-      <td>$2684.40</td>
-      <td>$3481.31</td>
-      <td>$991,974.86</td>
-      <td>
-        <span class="pill green">On track</span>
-      </td>
-    </tr>
+        <tr>
+          <td>3</td>
+          <td>$6165.71</td>
+          <td>$2684.40</td>
+          <td>$3481.31</td>
+          <td>$991,974.86</td>
+          <td>
+            <span class="pill green">On track</span>
+          </td>
+        </tr>
 
-    <tr>
-      <td>6</td>
-      <td>$6165.71</td>
-      <td>$2722.18</td>
-      <td>$3443.53</td>
-      <td>$981,142.97</td>
-      <td>
-        <span class="pill amber">Upcoming</span>
-      </td>
-    </tr>
+        <tr>
+          <td>6</td>
+          <td>$6165.71</td>
+          <td>$2722.18</td>
+          <td>$3443.53</td>
+          <td>$981,142.97</td>
+          <td>
+            <span class="pill amber">Upcoming</span>
+          </td>
+        </tr>
 
-    <tr>
-      <td>12</td>
-      <td>$6165.71</td>
-      <td>$2779.85</td>
-      <td>$3385.86</td>
-      <td>$964,608.64</td>
-      <td>
-        <span class="pill amber">Upcoming</span>
-      </td>
-    </tr>
+        <tr>
+          <td>12</td>
+          <td>$6165.71</td>
+          <td>$2779.85</td>
+          <td>$3385.86</td>
+          <td>$964,608.64</td>
+          <td>
+            <span class="pill amber">Upcoming</span>
+          </td>
+        </tr>
 
-    <tr>
-      <td>240</td>
-      <td>$6165.71</td>
-      <td>$6144.20</td>
-      <td>$21.50</td>
-      <td>$0.00</td>
-      <td>
-        <span class="pill amber">Upcoming</span>
-      </td>
-    </tr>
+        <tr>
+          <td>240</td>
+          <td>$6165.71</td>
+          <td>$6144.20</td>
+          <td>$21.50</td>
+          <td>$0.00</td>
+          <td>
+            <span class="pill amber">Upcoming</span>
+          </td>
+        </tr>
 
-  </tbody>
+      </tbody>
 
-</table>
-```
+    </table>
 
   </div>
 
@@ -2306,66 +2333,61 @@ at 4.2% APR over 240 months.
 
   <div class="app-text">
 
-```
-<h2>
-  Get LoanGenerators free on Android
-</h2>
+    <h2>
+      Get LoanGenerators free on Android
+    </h2>
 
-<p>
-  Download the app from Google Play and start simulating
-  your loan contracts in seconds. No sign-up, no fees,
-  no data shared.
-</p>
+    <p>
+      Download the app from Google Play and start simulating
+      your loan contracts in seconds. No sign-up, no fees,
+      no data shared.
+    </p>
 
-<div>
+    <div>
 
-  <a
-    href="https://play.google.com/store/apps/details?id=com.loan.generator"
-    target="_blank"
-    class="play-btn-lg">
+      <a
+        href="https://play.google.com/store/apps/details?id=com.loan.generator"
+        target="_blank"
+        class="play-btn-lg">
 
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="#039BE5">
-      <path d="M3 20.5v-17l18 8.5-18 8.5zm2-3.5 11.5-5L5 7v10z"/>
-    </svg>
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="#039BE5">
+          <path d="M3 20.5v-17l18 8.5-18 8.5zm2-3.5 11.5-5L5 7v10z"/>
+        </svg>
 
-    <div class="play-btn-text">
+        <div class="play-btn-text">
 
-      <small
-        style="font-size:10px;color:#6b7f95;text-transform:uppercase;letter-spacing:.5px;font-weight:400">
-        Get it on
-      </small>
+          <small
+            style="font-size:10px;color:#6b7f95;text-transform:uppercase;letter-spacing:.5px;font-weight:400">
+            Get it on
+          </small>
 
-      <strong style="font-size:16px;color:var(--navy)">
-        Google Play
-      </strong>
+          <strong style="font-size:16px;color:var(--navy)">
+            Google Play
+          </strong>
+
+        </div>
+
+      </a>
 
     </div>
-
-  </a>
-
-</div>
-```
-
   </div>
 
   <div class="app-stats">
 
-```
-<div class="app-stat">
-  <div class="app-stat-num">4.8★</div>
-  <div class="app-stat-lbl">Play Store rating</div>
-</div>
+    <div class="app-stat">
+      <div class="app-stat-num">4.8★</div>
+      <div class="app-stat-lbl">Play Store rating</div>
+    </div>
 
-<div class="app-stat">
-  <div class="app-stat-num">Free</div>
-  <div class="app-stat-lbl">No hidden costs</div>
-</div>
+    <div class="app-stat">
+      <div class="app-stat-num">Free</div>
+      <div class="app-stat-lbl">No hidden costs</div>
+    </div>
 
-<div class="app-stat">
-  <div class="app-stat-num">36+</div>
-  <div class="app-stat-lbl">Loan types</div>
-</div>
-```
+    <div class="app-stat">
+      <div class="app-stat-num">36+</div>
+      <div class="app-stat-lbl">Loan types</div>
+    </div>
 
   </div>
 
@@ -2387,116 +2409,162 @@ at 4.2% APR over 240 months.
     class="section-sub"
     style="margin-bottom:36px">
 
-```
-Here's what users say about the app on Google Play.
-```
+    Here's what users say about the app on Google Play.
 
   </p>
 
   <div class="testi-grid">
 
-```
-<div class="testi-card">
+    <div class="testi-card">
 
-  <div class="stars">
-    ★★★★★
-  </div>
-
-  <blockquote>
-    "Finally an app that shows me the full payment schedule
-    before I commit. Saved me thousands on my car loan."
-  </blockquote>
-
-  <div class="testi-author">
-
-    <div
-      class="testi-avatar"
-      style="background:#039BE5">
-      JM
-    </div>
-
-    <div>
-      <div class="testi-name">
-        James M.
+      <div class="stars">
+        ★★★★★
       </div>
 
-      <div class="testi-role">
-        Verified Play Store review
+      <blockquote>
+        "Finally an app that shows me the full payment schedule
+        before I commit. Saved me thousands on my car loan."
+      </blockquote>
+
+      <div class="testi-author">
+
+        <div
+          class="testi-avatar"
+          style="background:#039BE5">
+          JM
+        </div>
+
+        <div>
+          <div class="testi-name">
+            James M.
+          </div>
+
+          <div class="testi-role">
+            Verified Play Store review
+          </div>
+        </div>
+
       </div>
+
+    </div>
+
+
+    <div class="testi-card">
+
+      <div class="stars">
+        ★★★★★
+      </div>
+
+      <blockquote>
+        "Super clean UI. I ran 10 different loan simulations
+        in 5 minutes and picked the best deal. Highly recommend."
+      </blockquote>
+
+      <div class="testi-author">
+
+        <div
+          class="testi-avatar"
+          style="background:#01579B">
+          SR
+        </div>
+
+        <div>
+          <div class="testi-name">
+            Sofia R.
+          </div>
+
+          <div class="testi-role">
+            Verified Play Store review
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="testi-card">
+
+      <div class="stars">
+        ★★★★★
+      </div>
+
+      <blockquote>
+        "As a small business owner juggling multiple loans,
+        this makes comparing them incredibly transparent."
+      </blockquote>
+
+      <div class="testi-author">
+
+        <div
+          class="testi-avatar"
+          style="background:#00B0FF">
+          DP
+        </div>
+
+        <div>
+          <div class="testi-name">
+            David P.
+          </div>
+
+          <div class="testi-role">
+            Verified Play Store review
+          </div>
+        </div>
+
+      </div>
+
     </div>
 
   </div>
 
-</div>
+</section>
 
+<!-- MORE CALCULATORS (internal links, keyword-matched anchor text) -->
 
-<div class="testi-card">
+<section class="section more-calc" id="more-calculators">
 
-  <div class="stars">
-    ★★★★★
+  <div class="section-label">
+    More Calculators
   </div>
 
-  <blockquote>
-    "Super clean UI. I ran 10 different loan simulations
-    in 5 minutes and picked the best deal. Highly recommend."
-  </blockquote>
+  <h2>
+    Dedicated calculators for every loan type
+  </h2>
 
-  <div class="testi-author">
+  <p class="section-sub">
+    Each calculator below is built for one loan type, with a full
+    worked example and a breakdown of what actually moves your payment.
+  </p>
 
-    <div
-      class="testi-avatar"
-      style="background:#01579B">
-      SR
-    </div>
+  <div class="calc-grid">
 
-    <div>
-      <div class="testi-name">
-        Sofia R.
-      </div>
+    <a href="/car-loan-calculator.html" class="calc-card">
+      <h3>Car loan calculator: credit score &amp; down payment</h3>
+      <p>
+        See how your credit score and down payment change your monthly
+        payment and total interest on a new or used car loan.
+      </p>
+      <span class="calc-link">Calculate your car loan &rarr;</span>
+    </a>
 
-      <div class="testi-role">
-        Verified Play Store review
-      </div>
-    </div>
+    <a href="/mortgage-calculator.html" class="calc-card">
+      <h3>Mortgage calculator with PMI</h3>
+      <p>
+        Estimate your monthly mortgage payment, see how PMI affects it,
+        and find out when you can have it removed.
+      </p>
+      <span class="calc-link">Calculate your mortgage &rarr;</span>
+    </a>
 
-  </div>
-
-</div>
-
-
-<div class="testi-card">
-
-  <div class="stars">
-    ★★★★★
-  </div>
-
-  <blockquote>
-    "As a small business owner juggling multiple loans,
-    this makes comparing them incredibly transparent."
-  </blockquote>
-
-  <div class="testi-author">
-
-    <div
-      class="testi-avatar"
-      style="background:#00B0FF">
-      DP
-    </div>
-
-    <div>
-      <div class="testi-name">
-        David P.
-      </div>
-
-      <div class="testi-role">
-        Verified Play Store review
-      </div>
-    </div>
-
-  </div>
-
-</div>
-```
+    <a href="/personal-loan-calculator.html" class="calc-card">
+      <h3>Personal loan monthly payment calculator</h3>
+      <p>
+        Compare secured vs. unsecured personal loans and see your
+        exact monthly payment before you apply.
+      </p>
+      <span class="calc-link">Calculate your personal loan &rarr;</span>
+    </a>
 
   </div>
 
@@ -2520,32 +2588,30 @@ Here's what users say about the app on Google Play.
  target="_blank"
  class="cta-play-btn">
 
-```
-<svg
-  width="22"
-  height="22"
-  viewBox="0 0 24 24"
-  fill="var(--navy)">
+    <svg
+      width="22"
+      height="22"
+      viewBox="0 0 24 24"
+      fill="var(--navy)">
 
-  <path d="M3 20.5v-17l18 8.5-18 8.5zm2-3.5 11.5-5L5 7v10z"/>
+      <path d="M3 20.5v-17l18 8.5-18 8.5zm2-3.5 11.5-5L5 7v10z"/>
 
-</svg>
+    </svg>
 
-<div
-  class="play-btn-text"
-  style="color:var(--navy)">
+    <div
+      class="play-btn-text"
+      style="color:var(--navy)">
 
-  <small
-    style="opacity:.6;font-size:10px;text-transform:uppercase;letter-spacing:.5px">
-    Download free on
-  </small>
+      <small
+        style="opacity:.6;font-size:10px;text-transform:uppercase;letter-spacing:.5px">
+        Download free on
+      </small>
 
-  <strong style="font-size:15px">
-    Google Play
-  </strong>
+      <strong style="font-size:15px">
+        Google Play
+      </strong>
 
-</div>
-```
+    </div>
 
   </a>
 
@@ -2557,46 +2623,52 @@ Here's what users say about the app on Google Play.
 
   <div class="footer-logo">
 
-```
-<div class="logo-icon">
-  LG
-</div>
+    <div class="logo-icon">
+      LG
+    </div>
 
-<div
-  class="logo-text"
-  style="font-size:17px">
+    <div
+      class="logo-text"
+      style="font-size:17px">
 
-  Loan<span>Generators</span>
+      Loan<span>Generators</span>
 
-</div>
-```
-
+    </div>
   </div>
 
   <div class="footer-links">
 
-```
-<a href="privacy.html">
-  Privacy
-</a>
+    <a href="privacy.html">
+      Privacy
+    </a>
 
-<a href="#">
-  Terms
-</a>
+    <a href="#">
+      Terms
+    </a>
 
-<a href="#">
-  Support
-</a>
+    <a href="#">
+      Support
+    </a>
 
-<a
-  href="https://play.google.com/store/apps/details?id=com.loan.generator"
-  target="_blank">
+    <a href="/car-loan-calculator.html">
+      Car Loan Calculator
+    </a>
 
-  Download App
+    <a href="/mortgage-calculator.html">
+      Mortgage Calculator
+    </a>
 
-</a>
-```
+    <a href="/personal-loan-calculator.html">
+      Personal Loan Calculator
+    </a>
 
+    <a
+      href="https://play.google.com/store/apps/details?id=com.loan.generator"
+      target="_blank">
+
+      Download App
+
+    </a>
   </div>
 
   <p>
@@ -2604,26 +2676,6 @@ Here's what users say about the app on Google Play.
   </p>
 
 </footer>
-
-<!-- CALCULATOR LINKS -->
-
-<div style="text-align:center;padding:16px;">
-  <a href="/car-loan-calculator.html">
-    Car Loan Calculator
-  </a>
-</div>
-
-<div style="text-align:center;padding:16px;">
-  <a href="/mortgage-calculator.html">
-    Mortgage Calculator
-  </a>
-</div>
-
-<div style="text-align:center;padding:16px;">
-  <a href="/personal-loan-calculator.html">
-    Personal Loan Calculator
-  </a>
-</div>
 
 </body>
 </html>
