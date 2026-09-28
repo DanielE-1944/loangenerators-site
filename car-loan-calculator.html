@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Car Loan Calculator with Credit Score &amp; Down Payment | LoanGenerators</title>
-<meta name="description" content="Free car loan calculator. See how your credit score and down payment change your monthly car payment and total interest, with a side-by-side rate comparison.">
+<title>Car Loan Calculator with Residual (Balloon) Payment &amp; Credit Score | LoanGenerators</title>
+<meta name="description" content="Free car loan calculator with a residual (balloon) payment. See how the residual value and your credit score change your monthly car payment and total interest.">
 <link rel="canonical" href="https://loangenerators.com/car-loan-calculator.html">
 
-<meta property="og:title" content="Car Loan Calculator with Credit Score &amp; Down Payment">
-<meta property="og:description" content="See how your credit score and down payment change your monthly car payment and total interest.">
+<meta property="og:title" content="Car Loan Calculator with Residual (Balloon) Payment &amp; Credit Score">
+<meta property="og:description" content="See how a residual payment and your credit score change your monthly car payment and total interest.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://loangenerators.com/car-loan-calculator.html">
 <meta property="og:site_name" content="LoanGenerators">
@@ -20,7 +20,7 @@
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Car Loan Calculator",
+  "name": "Car Loan Calculator with Residual Payment",
   "url": "https://loangenerators.com/car-loan-calculator.html",
   "applicationCategory": "FinanceApplication",
   "operatingSystem": "Any",
@@ -36,18 +36,18 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "How does my credit score affect my car loan payment?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Lenders set your interest rate largely by your credit score. A higher score gets a lower rate, so the same loan costs less each month and far less in total interest. Use the calculator to compare score ranges on the same loan." }
+      "name": "What is a residual (balloon) payment on a car loan?",
+      "acceptedAnswer": { "@type": "Answer", "text": "It is a lump sum, usually set as the expected value of the car at the end of the loan, that you pay at the end instead of spreading it across the monthly payments. Your monthly payment is lower, but you must pay, refinance, or sell the car when the term ends." }
     },
     {
       "@type": "Question",
-      "name": "How much should I put down on a car?",
-      "acceptedAnswer": { "@type": "Answer", "text": "A common guideline is 10% to 20% of the price. A larger down payment reduces the amount you borrow, lowers your monthly payment and total interest, and helps you avoid owing more than the car is worth." }
+      "name": "Does a residual payment lower the total cost of the loan?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. It lowers the monthly payment, but part of the balance stays unpaid during the whole term, so you pay more interest in total. Compare both in the calculator." }
     },
     {
       "@type": "Question",
-      "name": "Is a longer car loan term a good idea?",
-      "acceptedAnswer": { "@type": "Answer", "text": "A longer term lowers the monthly payment but increases the total interest you pay, and you stay in debt longer. Compare terms in the calculator before you choose." }
+      "name": "What happens when the loan ends and the residual is due?",
+      "acceptedAnswer": { "@type": "Answer", "text": "You can pay the residual in cash, refinance it into a new loan, or sell the car and use the proceeds. If the car is worth less than the residual, you owe the difference." }
     },
     {
       "@type": "Question",
@@ -110,6 +110,7 @@
     background: #fff;
   }
   .field input:focus-visible, .field select:focus-visible { outline: 2px solid var(--primary); outline-offset: 1px; }
+  .hint { font-size: 0.8rem; color: var(--muted); margin-top: 4px; }
   .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   @media (max-width: 520px) { .grid-2 { grid-template-columns: 1fr; } }
 
@@ -151,8 +152,8 @@
 <body>
 
 <header>
-  <h1>Car Loan Calculator</h1>
-  <p>See how your credit score and down payment change your monthly payment</p>
+  <h1>Car Loan Calculator with Residual Payment</h1>
+  <p>See how a residual (balloon) payment and your credit score change your monthly payment</p>
 </header>
 
 <nav class="breadcrumb">
@@ -161,15 +162,16 @@
 
 <main>
 
-  <section class="calculator-card" aria-label="Car loan calculator">
+  <section class="calculator-card" aria-label="Car loan calculator with residual payment">
     <div class="grid-2">
       <div class="field">
-        <label for="price">Vehicle price ($)</label>
-        <input type="number" id="price" value="30000" min="0">
+        <label for="price">Amount financed ($)</label>
+        <input type="number" id="price" value="25000" min="0">
       </div>
       <div class="field">
-        <label for="down">Down payment ($)</label>
-        <input type="number" id="down" value="5000" min="0">
+        <label for="residual">Residual payment due at the end ($)</label>
+        <input type="number" id="residual" value="7500" min="0">
+        <div class="hint" id="residualPct"></div>
       </div>
       <div class="field">
         <label for="tier">Credit score range</label>
@@ -186,7 +188,6 @@
           <option value="48">48 months (4 years)</option>
           <option value="60" selected>60 months (5 years)</option>
           <option value="72">72 months (6 years)</option>
-          <option value="84">84 months (7 years)</option>
         </select>
       </div>
     </div>
@@ -195,9 +196,10 @@
 
     <div class="result" id="resultBox" aria-live="polite">
       <div class="result-row total"><span>Monthly payment</span><strong id="rMonthly">-</strong></div>
-      <div class="result-row"><span>Loan amount</span><strong id="rLoan">-</strong></div>
+      <div class="result-row"><span>Residual due at the end</span><strong id="rResidual">-</strong></div>
       <div class="result-row"><span>Total interest</span><strong id="rInterest">-</strong></div>
-      <div class="result-row"><span>Total cost of the loan</span><strong id="rTotal">-</strong></div>
+      <div class="result-row"><span>Total paid (payments + residual)</span><strong id="rTotal">-</strong></div>
+      <div class="result-row"><span>Monthly payment with no residual</span><strong id="rNoResidual">-</strong></div>
     </div>
 
     <h2 style="font-size:1.15rem;margin:28px 0 0">Same loan, different credit scores</h2>
@@ -217,47 +219,62 @@
   </div>
 
   <article>
-    <h2>Worked example: how credit score changes a $25,000 car loan</h2>
+    <h2>What a residual payment does</h2>
     <p>
-      Take a $25,000 loan over 60 months. With an excellent score and an illustrative
-      5.5% rate, the payment is about $478 a month and you pay roughly $3,650 in interest.
-      With a fair score at 9.5%, the same loan costs about $525 a month and $6,500 in
-      interest. At 15.5%, the payment is about $601 a month and interest reaches roughly
-      $11,100. The car and the term are identical; the score alone moves the total cost by
-      more than $7,400.
+      A residual (balloon) payment is a lump sum you owe when the loan ends, usually set near
+      the car's expected value at that point. Because you are not paying it off during the term,
+      the monthly payment is lower. The trade-off is that the unpaid part keeps accruing interest
+      the whole time, and at the end you must pay it, refinance it, or sell the car.
     </p>
 
-    <h2>How your down payment changes the payment</h2>
+    <h2>Worked example: $25,000 at 7% over 60 months</h2>
     <p>
-      Buying a $30,000 car at 7% over 60 months, a $0 down payment means borrowing $30,000:
-      about $594 a month and $5,640 in interest. Put $3,000 down and the payment drops to
-      about $535. Put $6,000 down (20%) and it falls to about $475 a month with roughly
-      $4,500 in interest. A larger down payment also lowers the risk of owing more than the
-      car is worth in the first years, when new cars lose value fastest.
+      With no residual, the payment is $495.03 a month, interest is $4,702, and you pay $29,702 in
+      total. With a $5,000 residual, the payment drops to $425.19, interest rises to $5,511, and the
+      total is $30,511. With a $10,000 residual, the payment is $355.35, interest is $6,321, and the
+      total is $31,321. Each extra $5,000 of residual saves about $70 a month but costs roughly
+      $810 more in interest.
     </p>
 
-    <h2>Loan term: lower payment or lower total cost</h2>
+    <h2>Residual payment and credit score together</h2>
     <p>
-      On a $25,000 loan at 7%, a 48-month term costs about $599 a month and $3,735 in
-      interest. A 60-month term is about $495 a month and $4,700 in interest. A 72-month
-      term is about $426 a month but $5,690 in interest. A longer term is easier on the
-      monthly budget and more expensive overall, so use the calculator to find the shortest
-      term you can comfortably afford.
+      Take the same $25,000 loan over 60 months with a $7,500 residual. At an illustrative 5.5%
+      the payment is about $369 a month and interest is roughly $4,620. At 9.5% it is about $427 a
+      month and $8,110 in interest. At 15.5% it is about $518 a month and $13,570 in interest. The
+      score alone changes the interest by almost $8,950, and a residual does not remove that gap.
+    </p>
+
+    <h2>Residual and loan term</h2>
+    <p>
+      On the same $25,000 loan at 7% with a $7,500 residual, a 36-month term costs about $584 a
+      month and $3,530 in interest. A 48-month term is about $463 a month and $4,715 in interest.
+      A 60-month term is about $390 a month and $5,916 in interest. A longer term with a residual
+      gives the lowest monthly payment, and also the highest total cost.
+    </p>
+
+    <h2>Residual value in a car lease</h2>
+    <p>
+      In a lease, the residual value is what the lessor expects the car to be worth at the end, and
+      it is not a payment you make. For a $25,000 car over 36 months with a 7% equivalent rate
+      (money factor 0.002917), a $15,000 residual gives about $394 a month, an $18,000 residual
+      about $320, and a $21,000 residual about $245. The higher the residual, the less depreciation
+      you pay for. A lease is a different product from a loan, so this calculator does not
+      replace one.
     </p>
 
     <h2>Frequently asked questions</h2>
     <div class="faq">
       <div class="faq-item">
-        <h3>How does my credit score affect my car loan payment?</h3>
-        <p>Lenders set your rate largely by your score. A higher score means a lower rate, a lower monthly payment, and much less total interest on the same loan.</p>
+        <h3>What is a residual (balloon) payment on a car loan?</h3>
+        <p>A lump sum due at the end, usually near the car's expected value then. It lowers the monthly payment, but you must pay, refinance, or sell the car when the term ends.</p>
       </div>
       <div class="faq-item">
-        <h3>How much should I put down on a car?</h3>
-        <p>A common guideline is 10% to 20% of the price. More down means a smaller loan, a lower payment, and less interest.</p>
+        <h3>Does a residual payment lower the total cost of the loan?</h3>
+        <p>No. It lowers the monthly payment but increases total interest, because part of the balance stays unpaid throughout the term.</p>
       </div>
       <div class="faq-item">
-        <h3>Is a longer car loan term a good idea?</h3>
-        <p>It lowers the monthly payment but raises total interest and keeps you in debt longer. Compare terms above before you choose.</p>
+        <h3>What happens when the loan ends and the residual is due?</h3>
+        <p>You can pay it in cash, refinance it, or sell the car and use the proceeds. If the car is worth less than the residual, you owe the difference.</p>
       </div>
       <div class="faq-item">
         <h3>Are the interest rates in this calculator real offers?</h3>
@@ -303,10 +320,11 @@
     return '$' + Math.round(n).toLocaleString('en-US');
   };
 
-  function payment(loan, apr, months) {
+  /* Monthly payment when a residual (balloon) is paid at the end. */
+  function payment(loan, apr, months, residual) {
     var r = apr / 100 / 12;
-    if (r === 0) return loan / months;
-    return loan * r / (1 - Math.pow(1 + r, -months));
+    if (r === 0) return (loan - residual) / months;
+    return (loan - residual / Math.pow(1 + r, months)) * r / (1 - Math.pow(1 + r, -months));
   }
 
   function buildTierSelect() {
@@ -319,36 +337,38 @@
   }
 
   function calculate() {
-    var price = parseFloat($('price').value) || 0;
-    var down = parseFloat($('down').value) || 0;
+    var loan = parseFloat($('price').value) || 0;
+    var residual = parseFloat($('residual').value) || 0;
     var apr = parseFloat($('apr').value) || 0;
     var months = parseInt($('term').value, 10) || 60;
     var err = $('err');
 
-    if (price <= 0) {
-      err.textContent = 'Enter a vehicle price greater than $0.';
+    if (loan <= 0) {
+      err.textContent = 'Enter an amount financed greater than $0.';
       err.classList.add('show');
       return;
     }
-    if (down >= price) {
-      err.textContent = 'Your down payment covers the full price, so there is nothing to finance. Lower the down payment to see a loan payment.';
+    if (residual < 0 || residual >= loan) {
+      err.textContent = 'The residual payment must be $0 or more and lower than the amount financed.';
       err.classList.add('show');
       return;
     }
     err.classList.remove('show');
+    $('residualPct').textContent = Math.round(residual / loan * 100) + '% of the amount financed';
 
-    var loan = price - down;
-    var pmt = payment(loan, apr, months);
-    var interest = pmt * months - loan;
+    var pmt = payment(loan, apr, months, residual);
+    var paid = pmt * months + residual;
+    var interest = paid - loan;
 
     $('rMonthly').textContent = money(pmt);
-    $('rLoan').textContent = money(loan);
+    $('rResidual').textContent = money(residual);
     $('rInterest').textContent = money(Math.max(interest, 0));
-    $('rTotal').textContent = money(pmt * months + down);
+    $('rTotal').textContent = money(paid);
+    $('rNoResidual').textContent = money(payment(loan, apr, months, 0));
 
     var rows = TIERS.map(function (t) {
-      var p = payment(loan, t.apr, months);
-      return { t: t, p: p, i: p * months - loan };
+      var p = payment(loan, t.apr, months, residual);
+      return { t: t, p: p, i: p * months + residual - loan };
     });
     var bestInterest = rows[0].i;
     var selected = $('tier').value;
@@ -375,7 +395,7 @@
     $('tier').value = match ? match.id : 'custom';
     calculate();
   });
-  ['price', 'down', 'term'].forEach(function (id) {
+  ['price', 'residual', 'term'].forEach(function (id) {
     $(id).addEventListener('input', calculate);
   });
 
