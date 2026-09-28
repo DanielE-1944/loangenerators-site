@@ -4,44 +4,31 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- ===== SEO META TAGS ===== -->
-<title>Mortgage Calculator - Monthly Payment & Amortization | LoanGenerators</title>
-<meta name="description" content="Free mortgage calculator. Estimate your monthly mortgage payment, total interest, and amortization schedule instantly, including property tax and insurance.">
-<meta name="keywords" content="mortgage calculator, home loan calculator, monthly mortgage payment calculator, amortization schedule, mortgage payment estimator">
-<link rel="canonical" href="https://loangenerators.com/mortgage-calculator.html">
+<title>Car Loan Calculator with Credit Score &amp; Down Payment | LoanGenerators</title>
+<meta name="description" content="Free car loan calculator. See how your credit score and down payment change your monthly car payment and total interest, with a side-by-side rate comparison.">
+<link rel="canonical" href="https://loangenerators.com/car-loan-calculator.html">
 
-<!-- ===== OPEN GRAPH ===== -->
-<meta property="og:title" content="Mortgage Calculator - Monthly Payment & Amortization">
-<meta property="og:description" content="Estimate your monthly mortgage payment, total interest, and amortization schedule for free.">
+<meta property="og:title" content="Car Loan Calculator with Credit Score &amp; Down Payment">
+<meta property="og:description" content="See how your credit score and down payment change your monthly car payment and total interest.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://loangenerators.com/mortgage-calculator.html">
+<meta property="og:url" content="https://loangenerators.com/car-loan-calculator.html">
 <meta property="og:site_name" content="LoanGenerators">
 
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
 
-<!-- ===== JSON-LD: WebApplication ===== -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Mortgage Calculator",
-  "url": "https://loangenerators.com/mortgage-calculator.html",
+  "name": "Car Loan Calculator",
+  "url": "https://loangenerators.com/car-loan-calculator.html",
   "applicationCategory": "FinanceApplication",
   "operatingSystem": "Any",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  },
-  "isPartOf": {
-    "@type": "WebSite",
-    "name": "LoanGenerators",
-    "url": "https://loangenerators.com"
-  }
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "isPartOf": { "@type": "WebSite", "name": "LoanGenerators", "url": "https://loangenerators.com" }
 }
 </script>
 
-<!-- ===== JSON-LD: FAQPage ===== -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -49,35 +36,23 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "How do you calculate a monthly mortgage payment?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "A monthly mortgage payment is based on the loan amount (home price minus down payment), the annual interest rate, and the loan term in years. The principal and interest are spread into equal monthly installments; property tax and home insurance are often added on top as an estimate."
-      }
+      "name": "How does my credit score affect my car loan payment?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Lenders set your interest rate largely by your credit score. A higher score gets a lower rate, so the same loan costs less each month and far less in total interest. Use the calculator to compare score ranges on the same loan." }
     },
     {
       "@type": "Question",
-      "name": "What is included in a mortgage payment besides principal and interest?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Beyond principal and interest, many homeowners also pay monthly property tax and homeowners insurance, sometimes collected together in an escrow account by the lender. Some loans also include private mortgage insurance (PMI) if the down payment is below 20%."
-      }
+      "name": "How much should I put down on a car?",
+      "acceptedAnswer": { "@type": "Answer", "text": "A common guideline is 10% to 20% of the price. A larger down payment reduces the amount you borrow, lowers your monthly payment and total interest, and helps you avoid owing more than the car is worth." }
     },
     {
       "@type": "Question",
-      "name": "How does the loan term affect my mortgage payment?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "A longer term, such as 30 years instead of 15, lowers the monthly payment but increases the total interest paid over the life of the loan. A shorter term raises the monthly payment but builds equity faster and costs less overall."
-      }
+      "name": "Is a longer car loan term a good idea?",
+      "acceptedAnswer": { "@type": "Answer", "text": "A longer term lowers the monthly payment but increases the total interest you pay, and you stay in debt longer. Compare terms in the calculator before you choose." }
     },
     {
       "@type": "Question",
-      "name": "How do I get rid of PMI on my mortgage?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "PMI is typically removed automatically once your loan balance drops to 78% of the home's original value, or you can request removal once it reaches 80%, provided your payments are current. Paying down the principal faster or making a larger down payment upfront both shorten the time PMI is charged."
-      }
+      "name": "Are the interest rates in this calculator real offers?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. The rates for each credit score range are illustrations only. Your actual rate depends on the lender, the vehicle, the term, and your full credit profile. You can type in your own rate at any time." }
     }
   ]
 }
@@ -92,6 +67,7 @@
     --text: #1c1f26;
     --muted: #5b6472;
     --border: #e2e6ec;
+    --warn: #b42318;
   }
   * { box-sizing: border-box; }
   body {
@@ -101,9 +77,7 @@
     color: var(--text);
     line-height: 1.6;
   }
-  h1, h2 {
-    font-family: 'Fraunces', Georgia, serif;
-  }
+  h1, h2 { font-family: 'Fraunces', Georgia, serif; }
   header {
     background: linear-gradient(135deg, var(--primary), var(--primary-dark));
     color: #fff;
@@ -112,12 +86,7 @@
   }
   header h1 { margin: 0 0 8px; font-size: 1.8rem; font-weight: 700; }
   header p { margin: 0; opacity: 0.9; font-size: 0.95rem; }
-  nav.breadcrumb {
-    max-width: 900px;
-    margin: 12px auto 0;
-    padding: 0 16px;
-    font-size: 0.85rem;
-  }
+  nav.breadcrumb { max-width: 900px; margin: 12px auto 0; padding: 0 16px; font-size: 0.85rem; }
   nav.breadcrumb a { color: var(--primary); text-decoration: none; }
   main { max-width: 900px; margin: 0 auto; padding: 24px 16px 60px; }
 
@@ -130,231 +99,181 @@
     margin-bottom: 32px;
   }
   .field { margin-bottom: 16px; }
-  .field label {
-    display: block;
-    font-weight: 600;
-    font-size: 0.9rem;
-    margin-bottom: 6px;
-    color: var(--muted);
-  }
-  .field input {
+  .field label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 6px; color: var(--muted); }
+  .field input, .field select {
     width: 100%;
     padding: 10px 12px;
     border: 1px solid var(--border);
     border-radius: 8px;
     font-size: 1rem;
     font-family: inherit;
+    background: #fff;
   }
-  .grid-2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-  }
-  @media (max-width: 520px) {
-    .grid-2 { grid-template-columns: 1fr; }
-  }
-  button.calc-btn {
-    width: 100%;
-    padding: 14px;
-    background: var(--primary);
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    margin-top: 8px;
-    font-family: inherit;
-  }
-  button.calc-btn:hover { background: var(--primary-dark); }
+  .field input:focus-visible, .field select:focus-visible { outline: 2px solid var(--primary); outline-offset: 1px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 520px) { .grid-2 { grid-template-columns: 1fr; } }
 
-  .result {
-    margin-top: 20px;
-    padding: 18px;
-    background: #eef4fc;
-    border-radius: 10px;
-    display: none;
-  }
-  .result.show { display: block; }
-  .result-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 6px 0;
-    border-bottom: 1px solid #dbe6f5;
-    font-size: 0.95rem;
-  }
+  .error { display: none; color: var(--warn); font-size: 0.9rem; font-weight: 600; margin-bottom: 8px; }
+  .error.show { display: block; }
+
+  .result { margin-top: 12px; padding: 18px; background: #eef4fc; border-radius: 10px; }
+  .result-row { display: flex; justify-content: space-between; padding: 6px 0; border-bottom: 1px solid #dbe6f5; font-size: 0.95rem; }
   .result-row:last-child { border-bottom: none; }
   .result-row strong { color: var(--primary-dark); }
   .result-row.total { font-weight: 700; font-size: 1.05rem; }
 
+  .table-wrap { overflow-x: auto; margin-top: 8px; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.9rem; min-width: 520px; }
+  th, td { padding: 9px 10px; text-align: right; border-bottom: 1px solid var(--border); }
+  th:first-child, td:first-child { text-align: left; }
+  th { font-size: 0.8rem; color: var(--muted); font-weight: 600; border-bottom: 1.5px solid var(--border); }
+  tr.selected td { background: #eef4fc; font-weight: 700; }
+  .note { font-size: 0.82rem; color: var(--muted); margin: 10px 0 0; }
+
   article h2 { font-size: 1.35rem; margin-top: 40px; }
-  article p { color: var(--text); }
   .faq { margin-top: 12px; }
   .faq-item { margin-bottom: 18px; }
-  .faq-item h3 { font-size: 1.05rem; margin-bottom: 4px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 600; }
+  .faq-item h3 { font-size: 1.05rem; margin-bottom: 4px; font-weight: 600; }
   .faq-item p { margin: 0; color: var(--muted); }
 
-  .cta-box {
-    margin-top: 40px;
-    padding: 20px;
-    background: var(--primary);
-    color: #fff;
-    border-radius: 12px;
-    text-align: center;
-  }
-  .cta-box a {
-    display: inline-block;
-    margin-top: 10px;
-    background: #fff;
-    color: var(--primary-dark);
-    padding: 10px 22px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
-  }
+  .cta-box { margin-top: 40px; padding: 20px; background: var(--primary); color: #fff; border-radius: 12px; text-align: center; }
+  .cta-box a { display: inline-block; margin-top: 10px; background: #fff; color: var(--primary-dark); padding: 10px 22px; border-radius: 8px; text-decoration: none; font-weight: 600; }
 
   .internal-links { margin-top: 32px; font-size: 0.9rem; }
   .internal-links a { color: var(--primary); margin-right: 14px; text-decoration: none; }
 
-  .ad-slot {
-    margin: 30px 0;
-    text-align: center;
-    min-height: 90px;
-  }
+  .ad-slot { margin: 30px 0; text-align: center; min-height: 90px; }
 
-  footer {
-    text-align: center;
-    padding: 24px 16px;
-    font-size: 0.85rem;
-    color: var(--muted);
-  }
+  footer { text-align: center; padding: 24px 16px; font-size: 0.85rem; color: var(--muted); }
   footer a { color: var(--muted); }
 </style>
 </head>
 <body>
 
 <header>
-  <h1>Mortgage Calculator</h1>
-  <p>Estimate your monthly mortgage payment, including tax and insurance</p>
+  <h1>Car Loan Calculator</h1>
+  <p>See how your credit score and down payment change your monthly payment</p>
 </header>
 
 <nav class="breadcrumb">
-  <a href="/">Home</a> &raquo; Mortgage Calculator
+  <a href="/">Home</a> &raquo; Car Loan Calculator
 </nav>
 
 <main>
 
-  <!-- ===== CALCULATOR ===== -->
-  <section class="calculator-card" aria-label="Mortgage calculator">
+  <section class="calculator-card" aria-label="Car loan calculator">
     <div class="grid-2">
       <div class="field">
-        <label for="homePrice">Home price ($)</label>
-        <input type="number" id="homePrice" value="350000" min="0">
+        <label for="price">Vehicle price ($)</label>
+        <input type="number" id="price" value="30000" min="0">
       </div>
       <div class="field">
-        <label for="downPayment">Down payment ($)</label>
-        <input type="number" id="downPayment" value="70000" min="0">
+        <label for="down">Down payment ($)</label>
+        <input type="number" id="down" value="5000" min="0">
       </div>
       <div class="field">
-        <label for="interestRate">Annual interest rate (%)</label>
-        <input type="number" id="interestRate" value="6.5" min="0" step="0.01">
+        <label for="tier">Credit score range</label>
+        <select id="tier"></select>
       </div>
       <div class="field">
-        <label for="loanTerm">Loan term (years)</label>
-        <input type="number" id="loanTerm" value="30" min="1">
+        <label for="apr">Annual interest rate (%)</label>
+        <input type="number" id="apr" value="7" min="0" step="0.01">
       </div>
       <div class="field">
-        <label for="propertyTax">Annual property tax ($, optional)</label>
-        <input type="number" id="propertyTax" value="4200" min="0">
-      </div>
-      <div class="field">
-        <label for="homeInsurance">Annual home insurance ($, optional)</label>
-        <input type="number" id="homeInsurance" value="1500" min="0">
+        <label for="term">Loan term</label>
+        <select id="term">
+          <option value="36">36 months (3 years)</option>
+          <option value="48">48 months (4 years)</option>
+          <option value="60" selected>60 months (5 years)</option>
+          <option value="72">72 months (6 years)</option>
+          <option value="84">84 months (7 years)</option>
+        </select>
       </div>
     </div>
-    <button class="calc-btn" onclick="calculateMortgage()">Calculate Payment</button>
 
-    <div class="result" id="resultBox">
-      <div class="result-row"><span>Principal & interest</span><strong id="rPI">-</strong></div>
-      <div class="result-row"><span>Property tax (monthly)</span><strong id="rTax">-</strong></div>
-      <div class="result-row"><span>Home insurance (monthly)</span><strong id="rIns">-</strong></div>
-      <div class="result-row total"><span>Total monthly payment</span><strong id="rMonthly">-</strong></div>
-      <div class="result-row"><span>Loan amount</span><strong id="rPrincipal">-</strong></div>
-      <div class="result-row"><span>Total interest over loan term</span><strong id="rInterest">-</strong></div>
+    <div class="error" id="err" role="alert"></div>
+
+    <div class="result" id="resultBox" aria-live="polite">
+      <div class="result-row total"><span>Monthly payment</span><strong id="rMonthly">-</strong></div>
+      <div class="result-row"><span>Loan amount</span><strong id="rLoan">-</strong></div>
+      <div class="result-row"><span>Total interest</span><strong id="rInterest">-</strong></div>
+      <div class="result-row"><span>Total cost of the loan</span><strong id="rTotal">-</strong></div>
     </div>
+
+    <h2 style="font-size:1.15rem;margin:28px 0 0">Same loan, different credit scores</h2>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Credit score</th><th>Rate</th><th>Monthly payment</th><th>Total interest</th><th>Extra vs. best range</th></tr>
+        </thead>
+        <tbody id="tierBody"></tbody>
+      </table>
+    </div>
+    <p class="note">Rates for each range are illustrations, not offers. Your actual rate depends on the lender, the vehicle, the term, and your full credit profile. Ranges follow the FICO scale used in the U.S.</p>
   </section>
 
   <div class="ad-slot">
     <!-- AdSense unit: reuse existing ca-pub-2401324520716270 slot -->
   </div>
 
-  <!-- ===== EXPLANATORY CONTENT (SEO) ===== -->
   <article>
-    <h2>Worked example: a $350,000 home with 20% down</h2>
+    <h2>Worked example: how credit score changes a $25,000 car loan</h2>
     <p>
-      Say you're buying a $350,000 home with a $70,000 down payment (20%) on a 30-year
-      fixed mortgage at 6.5%. You'd be borrowing $280,000, which comes out to a
-      principal-and-interest payment of about $1,770 a month. Add typical annual costs of
-      $4,200 in property tax and $1,500 in home insurance — split monthly, that's another
-      $475 — and your total monthly payment lands around $2,245. Over the full 30 years
-      you'd pay roughly $357,000 in interest alone, more than the original loan amount.
-      Switch to a 15-year term at the same rate and the monthly principal-and-interest
-      payment rises to about $2,440, but total interest drops to around $159,000 —
-      nearly $198,000 less over the life of the loan.
+      Take a $25,000 loan over 60 months. With an excellent score and an illustrative
+      5.5% rate, the payment is about $478 a month and you pay roughly $3,650 in interest.
+      With a fair score at 9.5%, the same loan costs about $525 a month and $6,500 in
+      interest. At 15.5%, the payment is about $601 a month and interest reaches roughly
+      $11,100. The car and the term are identical; the score alone moves the total cost by
+      more than $7,400.
     </p>
 
-    <h2>How PMI affects your payment</h2>
+    <h2>How your down payment changes the payment</h2>
     <p>
-      If your down payment is below 20% of the home price, most lenders require private
-      mortgage insurance (PMI), which protects the lender — not you — in case you default.
-      PMI typically costs between 0.5% and 1.5% of the loan amount per year, added to your
-      monthly payment on top of principal, interest, tax, and insurance. On a $280,000 loan,
-      that's roughly $115 to $350 extra per month. The good news is PMI isn't permanent:
-      lenders are required to cancel it automatically once your balance reaches 78% of the
-      home's original value, and you can request removal yourself once you hit 80% equity —
-      so a bigger down payment or extra principal payments both shorten how long you carry it.
+      Buying a $30,000 car at 7% over 60 months, a $0 down payment means borrowing $30,000:
+      about $594 a month and $5,640 in interest. Put $3,000 down and the payment drops to
+      about $535. Put $6,000 down (20%) and it falls to about $475 a month with roughly
+      $4,500 in interest. A larger down payment also lowers the risk of owing more than the
+      car is worth in the first years, when new cars lose value fastest.
     </p>
 
-    <h2>Choosing between a 15-year and 30-year term</h2>
+    <h2>Loan term: lower payment or lower total cost</h2>
     <p>
-      A 30-year mortgage keeps the monthly payment lower and more manageable against a
-      typical household budget, which is why it's the more common choice. A 15-year
-      mortgage costs more per month but builds equity roughly twice as fast and can save
-      well over $100,000 in interest on a typical loan, since less of the balance sits
-      accruing interest over time. If you can comfortably afford the higher payment, the
-      15-year option is usually the cheaper path overall — use the calculator above to see
-      the exact difference for your numbers.
+      On a $25,000 loan at 7%, a 48-month term costs about $599 a month and $3,735 in
+      interest. A 60-month term is about $495 a month and $4,700 in interest. A 72-month
+      term is about $426 a month but $5,690 in interest. A longer term is easier on the
+      monthly budget and more expensive overall, so use the calculator to find the shortest
+      term you can comfortably afford.
     </p>
 
     <h2>Frequently asked questions</h2>
     <div class="faq">
       <div class="faq-item">
-        <h3>How do you calculate a monthly mortgage payment?</h3>
-        <p>It's based on the loan amount (price minus down payment), the annual interest rate, and the term in years, split into equal payments that cover interest and principal.</p>
+        <h3>How does my credit score affect my car loan payment?</h3>
+        <p>Lenders set your rate largely by your score. A higher score means a lower rate, a lower monthly payment, and much less total interest on the same loan.</p>
       </div>
       <div class="faq-item">
-        <h3>What is included in a mortgage payment besides principal and interest?</h3>
-        <p>Many homeowners also pay property tax and home insurance monthly, sometimes collected in escrow. Loans with a down payment under 20% often add private mortgage insurance (PMI) too.</p>
+        <h3>How much should I put down on a car?</h3>
+        <p>A common guideline is 10% to 20% of the price. More down means a smaller loan, a lower payment, and less interest.</p>
       </div>
       <div class="faq-item">
-        <h3>How does the loan term affect my payment?</h3>
-        <p>A longer term (30 years) lowers the monthly payment but increases total interest. A shorter term (15 years) raises the payment but costs less overall.</p>
+        <h3>Is a longer car loan term a good idea?</h3>
+        <p>It lowers the monthly payment but raises total interest and keeps you in debt longer. Compare terms above before you choose.</p>
       </div>
       <div class="faq-item">
-        <h3>How do I get rid of PMI on my mortgage?</h3>
-        <p>PMI is removed automatically once your balance reaches 78% of the home's original value, or you can request removal at 80%. Extra principal payments or a larger down payment both get you there sooner.</p>
+        <h3>Are the interest rates in this calculator real offers?</h3>
+        <p>No. They are illustrations for each score range. Type in your own rate at any time to get an exact result.</p>
       </div>
     </div>
   </article>
 
   <div class="cta-box">
-    <p>Want to see how a mortgage stacks up against your other loan payments?</p>
-    <a href="https://play.google.com/store/apps/details?id=com.loan.generator" target="_blank" rel="noopener">Plan your full budget in the LoanGenerators app</a>
+    <p>Want to compare several loan offers side by side?</p>
+    <a href="https://play.google.com/store/apps/details?id=com.loan.generator" target="_blank" rel="noopener">Compare loans in the LoanGenerators app</a>
   </div>
 
   <nav class="internal-links">
     <a href="/">Home</a>
-    <a href="/car-loan-calculator.html">Car Loan Calculator</a>
+    <a href="/mortgage-calculator.html">Mortgage Calculator</a>
     <a href="/personal-loan-calculator.html">Personal Loan Calculator</a>
   </nav>
 
@@ -367,44 +286,101 @@
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  function calculateMortgage() {
-    const price = parseFloat(document.getElementById('homePrice').value) || 0;
-    const down = parseFloat(document.getElementById('downPayment').value) || 0;
-    const annualRate = parseFloat(document.getElementById('interestRate').value) || 0;
-    const years = parseInt(document.getElementById('loanTerm').value) || 1;
-    const annualTax = parseFloat(document.getElementById('propertyTax').value) || 0;
-    const annualInsurance = parseFloat(document.getElementById('homeInsurance').value) || 0;
+  /* Illustrative rates: edit here only. Rates are examples, not offers. */
+  var TIERS = [
+    { id: 'excellent', label: 'Excellent (781-850)', apr: 5.5 },
+    { id: 'good',      label: 'Good (661-780)',      apr: 7.0 },
+    { id: 'fair',      label: 'Fair (601-660)',      apr: 9.5 },
+    { id: 'poor',      label: 'Poor (501-600)',      apr: 12.5 },
+    { id: 'bad',       label: 'Very poor (300-500)', apr: 15.5 }
+  ];
 
-    const principal = Math.max(price - down, 0);
-    const months = years * 12;
-    const monthlyRate = (annualRate / 100) / 12;
+  var $ = function (id) { return document.getElementById(id); };
+  var money = function (n) {
+    return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  };
+  var money0 = function (n) {
+    return '$' + Math.round(n).toLocaleString('en-US');
+  };
 
-    let monthlyPI;
-    if (monthlyRate === 0) {
-      monthlyPI = principal / months;
-    } else {
-      monthlyPI = principal *
-        (monthlyRate * Math.pow(1 + monthlyRate, months)) /
-        (Math.pow(1 + monthlyRate, months) - 1);
-    }
-
-    const monthlyTax = annualTax / 12;
-    const monthlyInsurance = annualInsurance / 12;
-    const totalMonthly = monthlyPI + monthlyTax + monthlyInsurance;
-
-    const totalInterest = (monthlyPI * months) - principal;
-
-    const fmt = (n) => '$' + n.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-
-    document.getElementById('rPI').textContent = fmt(monthlyPI);
-    document.getElementById('rTax').textContent = fmt(monthlyTax);
-    document.getElementById('rIns').textContent = fmt(monthlyInsurance);
-    document.getElementById('rMonthly').textContent = fmt(totalMonthly);
-    document.getElementById('rPrincipal').textContent = fmt(principal);
-    document.getElementById('rInterest').textContent = fmt(Math.max(totalInterest, 0));
-
-    document.getElementById('resultBox').classList.add('show');
+  function payment(loan, apr, months) {
+    var r = apr / 100 / 12;
+    if (r === 0) return loan / months;
+    return loan * r / (1 - Math.pow(1 + r, -months));
   }
+
+  function buildTierSelect() {
+    var html = TIERS.map(function (t) {
+      return '<option value="' + t.id + '">' + t.label + '</option>';
+    }).join('');
+    $('tier').innerHTML = html + '<option value="custom">Custom rate</option>';
+    $('tier').value = 'good';
+    $('apr').value = 7;
+  }
+
+  function calculate() {
+    var price = parseFloat($('price').value) || 0;
+    var down = parseFloat($('down').value) || 0;
+    var apr = parseFloat($('apr').value) || 0;
+    var months = parseInt($('term').value, 10) || 60;
+    var err = $('err');
+
+    if (price <= 0) {
+      err.textContent = 'Enter a vehicle price greater than $0.';
+      err.classList.add('show');
+      return;
+    }
+    if (down >= price) {
+      err.textContent = 'Your down payment covers the full price, so there is nothing to finance. Lower the down payment to see a loan payment.';
+      err.classList.add('show');
+      return;
+    }
+    err.classList.remove('show');
+
+    var loan = price - down;
+    var pmt = payment(loan, apr, months);
+    var interest = pmt * months - loan;
+
+    $('rMonthly').textContent = money(pmt);
+    $('rLoan').textContent = money(loan);
+    $('rInterest').textContent = money(Math.max(interest, 0));
+    $('rTotal').textContent = money(pmt * months + down);
+
+    var rows = TIERS.map(function (t) {
+      var p = payment(loan, t.apr, months);
+      return { t: t, p: p, i: p * months - loan };
+    });
+    var bestInterest = rows[0].i;
+    var selected = $('tier').value;
+
+    $('tierBody').innerHTML = rows.map(function (row) {
+      var extra = row.i - bestInterest;
+      return '<tr' + (row.t.id === selected ? ' class="selected"' : '') + '>' +
+        '<td>' + row.t.label + '</td>' +
+        '<td>' + row.t.apr.toFixed(1) + '%</td>' +
+        '<td>' + money(row.p) + '</td>' +
+        '<td>' + money0(row.i) + '</td>' +
+        '<td>' + (extra > 0 ? '+' + money0(extra) : '-') + '</td>' +
+        '</tr>';
+    }).join('');
+  }
+
+  $('tier').addEventListener('change', function () {
+    var t = TIERS.filter(function (x) { return x.id === $('tier').value; })[0];
+    if (t) $('apr').value = t.apr;
+    calculate();
+  });
+  $('apr').addEventListener('input', function () {
+    var match = TIERS.filter(function (x) { return x.apr === parseFloat($('apr').value); })[0];
+    $('tier').value = match ? match.id : 'custom';
+    calculate();
+  });
+  ['price', 'down', 'term'].forEach(function (id) {
+    $(id).addEventListener('input', calculate);
+  });
+
+  buildTierSelect();
+  calculate();
 </script>
 
 </body>
