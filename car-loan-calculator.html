@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Car Loan Calculator with Residual (Balloon) Payment &amp; Credit Score | LoanGenerators</title>
-<meta name="description" content="Free car loan calculator with a residual (balloon) payment. See how the residual value and your credit score change your monthly car payment and total interest.">
+<title>Car Loan Calculator: Residual Payment, Down Payment &amp; Credit Score | LoanGenerators</title>
+<meta name="description" content="Free car loan calculators: one with a residual (balloon) payment, one with a down payment. See how your credit score changes your monthly car payment and total interest.">
 <link rel="canonical" href="https://loangenerators.com/car-loan-calculator.html">
 
-<meta property="og:title" content="Car Loan Calculator with Residual (Balloon) Payment &amp; Credit Score">
-<meta property="og:description" content="See how a residual payment and your credit score change your monthly car payment and total interest.">
+<meta property="og:title" content="Car Loan Calculator: Residual Payment, Down Payment &amp; Credit Score">
+<meta property="og:description" content="See how a residual payment, a down payment and your credit score change your monthly car payment and total interest.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://loangenerators.com/car-loan-calculator.html">
 <meta property="og:site_name" content="LoanGenerators">
@@ -20,7 +20,7 @@
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Car Loan Calculator with Residual Payment",
+  "name": "Car Loan Calculator with Residual Payment and Down Payment",
   "url": "https://loangenerators.com/car-loan-calculator.html",
   "applicationCategory": "FinanceApplication",
   "operatingSystem": "Any",
@@ -48,6 +48,16 @@
       "@type": "Question",
       "name": "What happens when the loan ends and the residual is due?",
       "acceptedAnswer": { "@type": "Answer", "text": "You can pay the residual in cash, refinance it into a new loan, or sell the car and use the proceeds. If the car is worth less than the residual, you owe the difference." }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does a down payment lower my car loan payment?",
+      "acceptedAnswer": { "@type": "Answer", "text": "A down payment reduces the amount you borrow, so both the monthly payment and the total interest go down. On a $30,000 car at 7% over 60 months, a $6,000 down payment lowers the payment from $594.04 to $475.23 and the interest from $5,642 to $4,514." }
+    },
+    {
+      "@type": "Question",
+      "name": "How much down payment should I put on a car?",
+      "acceptedAnswer": { "@type": "Answer", "text": "A common guideline is about 20% of the price for a new car and 10% for a used one, which helps you avoid owing more than the car is worth. The right amount depends on your savings and the rate you are offered." }
     },
     {
       "@type": "Question",
@@ -98,6 +108,7 @@
     box-shadow: 0 2px 10px rgba(0,0,0,0.04);
     margin-bottom: 32px;
   }
+  .calc-title { font-family: 'Fraunces', Georgia, serif; font-size: 1.3rem; margin: 0 0 16px; }
   .field { margin-bottom: 16px; }
   .field label { display: block; font-weight: 600; font-size: 0.9rem; margin-bottom: 6px; color: var(--muted); }
   .field input, .field select {
@@ -123,6 +134,7 @@
   .result-row strong { color: var(--primary-dark); }
   .result-row.total { font-weight: 700; font-size: 1.05rem; }
 
+  .sub-title { font-size: 1.15rem; margin: 28px 0 0; }
   .table-wrap { overflow-x: auto; margin-top: 8px; }
   table { width: 100%; border-collapse: collapse; font-size: 0.9rem; min-width: 520px; }
   th, td { padding: 9px 10px; text-align: right; border-bottom: 1px solid var(--border); }
@@ -152,8 +164,8 @@
 <body>
 
 <header>
-  <h1>Car Loan Calculator with Residual Payment</h1>
-  <p>See how a residual (balloon) payment and your credit score change your monthly payment</p>
+  <h1>Car Loan Calculator</h1>
+  <p>See how a residual payment, a down payment and your credit score change your monthly payment</p>
 </header>
 
 <nav class="breadcrumb">
@@ -162,7 +174,9 @@
 
 <main>
 
-  <section class="calculator-card" aria-label="Car loan calculator with residual payment">
+  <!-- CALCULATOR 1: RESIDUAL PAYMENT -->
+  <section class="calculator-card" id="residual-calculator" aria-label="Car loan calculator with residual payment">
+    <h2 class="calc-title">Car loan with a residual (balloon) payment</h2>
     <div class="grid-2">
       <div class="field">
         <label for="price">Amount financed ($)</label>
@@ -202,13 +216,80 @@
       <div class="result-row"><span>Monthly payment with no residual</span><strong id="rNoResidual">-</strong></div>
     </div>
 
-    <h2 style="font-size:1.15rem;margin:28px 0 0">Same loan, different credit scores</h2>
+    <h3 class="sub-title">Same loan, different credit scores</h3>
     <div class="table-wrap">
       <table>
         <thead>
           <tr><th>Credit score</th><th>Rate</th><th>Monthly payment</th><th>Total interest</th><th>Extra vs. best range</th></tr>
         </thead>
         <tbody id="tierBody"></tbody>
+      </table>
+    </div>
+    <p class="note">Rates for each range are illustrations, not offers. Your actual rate depends on the lender, the vehicle, the term, and your full credit profile. Ranges follow the FICO scale used in the U.S.</p>
+  </section>
+
+  <!-- CALCULATOR 2: DOWN PAYMENT -->
+  <section class="calculator-card" id="down-payment-calculator" aria-label="Car loan calculator with down payment and credit score">
+    <h2 class="calc-title">Car loan with a down payment &amp; credit score</h2>
+    <div class="grid-2">
+      <div class="field">
+        <label for="dPrice">Car price ($)</label>
+        <input type="number" id="dPrice" value="30000" min="0">
+      </div>
+      <div class="field">
+        <label for="dDown">Down payment ($)</label>
+        <input type="number" id="dDown" value="6000" min="0">
+        <div class="hint" id="dDownPct"></div>
+      </div>
+      <div class="field">
+        <label for="dTier">Credit score range</label>
+        <select id="dTier"></select>
+      </div>
+      <div class="field">
+        <label for="dApr">Annual interest rate (%)</label>
+        <input type="number" id="dApr" value="7" min="0" step="0.01">
+      </div>
+      <div class="field">
+        <label for="dTerm">Loan term</label>
+        <select id="dTerm">
+          <option value="36">36 months (3 years)</option>
+          <option value="48">48 months (4 years)</option>
+          <option value="60" selected>60 months (5 years)</option>
+          <option value="72">72 months (6 years)</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="error" id="dErr" role="alert"></div>
+
+    <div class="result" aria-live="polite">
+      <div class="result-row total"><span>Monthly payment</span><strong id="dMonthly">-</strong></div>
+      <div class="result-row"><span>Interest rate (annual)</span><strong id="dRate">-</strong></div>
+      <div class="result-row"><span>Amount financed (price - down payment)</span><strong id="dFinanced">-</strong></div>
+      <div class="result-row"><span>Total interest</span><strong id="dInterest">-</strong></div>
+      <div class="result-row"><span>Total paid on the loan</span><strong id="dPaid">-</strong></div>
+      <div class="result-row"><span>Total cost of the car (loan + down payment)</span><strong id="dTotalCost">-</strong></div>
+      <div class="result-row"><span>Monthly payment with no down payment</span><strong id="dNoDown">-</strong></div>
+    </div>
+
+    <h3 class="sub-title">Same car, different down payments</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Down payment</th><th>Financed</th><th>Monthly payment</th><th>Total interest</th><th>Interest saved vs. $0 down</th></tr>
+        </thead>
+        <tbody id="dDownBody"></tbody>
+      </table>
+    </div>
+    <p class="note">The table uses your car price, rate and term. Rows show 0%, 10%, 20% and 30% of the price.</p>
+
+    <h3 class="sub-title">Same loan, different credit scores</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Credit score</th><th>Rate</th><th>Monthly payment</th><th>Total interest</th><th>Extra vs. best range</th></tr>
+        </thead>
+        <tbody id="dTierBody"></tbody>
       </table>
     </div>
     <p class="note">Rates for each range are illustrations, not offers. Your actual rate depends on the lender, the vehicle, the term, and your full credit profile. Ranges follow the FICO scale used in the U.S.</p>
@@ -262,6 +343,42 @@
       replace one.
     </p>
 
+    <h2>What a down payment does</h2>
+    <p>
+      A down payment is cash you pay up front, so you borrow less. Unlike a residual payment, it
+      lowers both the monthly payment and the total interest, because there is simply less balance
+      accruing interest for the whole term. It also helps you avoid owing more than the car is
+      worth in the first years, when a new car loses value fastest.
+    </p>
+
+    <h2>Worked example: $30,000 car at 7% over 60 months</h2>
+    <p>
+      With no down payment, you finance $30,000: the payment is $594.04 a month and interest is
+      $5,642. With $3,000 down (10%), you finance $27,000: the payment is $534.63 and interest is
+      $5,078. With $6,000 down (20%), you finance $24,000: the payment is $475.23 and interest is
+      $4,514. With $9,000 down (30%), you finance $21,000: the payment is $415.83 and interest is
+      $3,950. Each extra $3,000 down saves about $59 a month and about $564 in interest.
+    </p>
+
+    <h2>Down payment and credit score together</h2>
+    <p>
+      Take the $30,000 car with $6,000 down, so $24,000 financed over 60 months. At an illustrative
+      5.5% the payment is about $458 a month and interest is roughly $3,506. At 9.5% it is about
+      $504 a month and $6,243 in interest. At 15.5% it is about $577 a month and $10,637 in
+      interest. The score alone changes the interest by about $7,130. A larger down payment helps,
+      but it does not close that gap: a buyer with a poor score and 30% down still pays more
+      interest than a buyer with an excellent score and 20% down.
+    </p>
+
+    <h2>Down payment and loan term</h2>
+    <p>
+      On the same $24,000 financed at 7%, a 36-month term costs about $741 a month and $2,678 in
+      interest. A 48-month term is about $575 a month and $3,586 in interest. A 60-month term is
+      about $475 a month and $4,514 in interest. A 72-month term is about $409 a month and $5,461
+      in interest. A larger down payment lets you choose a shorter term without the payment
+      becoming unaffordable.
+    </p>
+
     <h2>Frequently asked questions</h2>
     <div class="faq">
       <div class="faq-item">
@@ -275,6 +392,14 @@
       <div class="faq-item">
         <h3>What happens when the loan ends and the residual is due?</h3>
         <p>You can pay it in cash, refinance it, or sell the car and use the proceeds. If the car is worth less than the residual, you owe the difference.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How much does a down payment lower my car loan payment?</h3>
+        <p>It reduces the amount you borrow, so the monthly payment and total interest both fall. On a $30,000 car at 7% over 60 months, $6,000 down lowers the payment from $594.04 to $475.23 and the interest from $5,642 to $4,514.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How much down payment should I put on a car?</h3>
+        <p>A common guideline is about 20% of the price for a new car and 10% for a used one. The right amount depends on your savings and the rate you are offered.</p>
       </div>
       <div class="faq-item">
         <h3>Are the interest rates in this calculator real offers?</h3>
@@ -327,15 +452,30 @@
     return (loan - residual / Math.pow(1 + r, months)) * r / (1 - Math.pow(1 + r, -months));
   }
 
-  function buildTierSelect() {
-    var html = TIERS.map(function (t) {
+  function tierOptions() {
+    return TIERS.map(function (t) {
       return '<option value="' + t.id + '">' + t.label + '</option>';
-    }).join('');
-    $('tier').innerHTML = html + '<option value="custom">Custom rate</option>';
-    $('tier').value = 'good';
-    $('apr').value = 7;
+    }).join('') + '<option value="custom">Custom rate</option>';
   }
 
+  /* Links a credit-score select and a rate input together. */
+  function bindTier(tierId, aprId, onChange) {
+    $(tierId).innerHTML = tierOptions();
+    $(tierId).value = 'good';
+    $(aprId).value = 7;
+    $(tierId).addEventListener('change', function () {
+      var t = TIERS.filter(function (x) { return x.id === $(tierId).value; })[0];
+      if (t) $(aprId).value = t.apr;
+      onChange();
+    });
+    $(aprId).addEventListener('input', function () {
+      var match = TIERS.filter(function (x) { return x.apr === parseFloat($(aprId).value); })[0];
+      $(tierId).value = match ? match.id : 'custom';
+      onChange();
+    });
+  }
+
+  /* ---------- Calculator 1: residual payment ---------- */
   function calculate() {
     var loan = parseFloat($('price').value) || 0;
     var residual = parseFloat($('residual').value) || 0;
@@ -385,22 +525,89 @@
     }).join('');
   }
 
-  $('tier').addEventListener('change', function () {
-    var t = TIERS.filter(function (x) { return x.id === $('tier').value; })[0];
-    if (t) $('apr').value = t.apr;
-    calculate();
-  });
-  $('apr').addEventListener('input', function () {
-    var match = TIERS.filter(function (x) { return x.apr === parseFloat($('apr').value); })[0];
-    $('tier').value = match ? match.id : 'custom';
-    calculate();
-  });
+  /* ---------- Calculator 2: down payment ---------- */
+  function calculateDown() {
+    var price = parseFloat($('dPrice').value) || 0;
+    var down = parseFloat($('dDown').value) || 0;
+    var apr = parseFloat($('dApr').value) || 0;
+    var months = parseInt($('dTerm').value, 10) || 60;
+    var err = $('dErr');
+
+    if (price <= 0) {
+      err.textContent = 'Enter a car price greater than $0.';
+      err.classList.add('show');
+      return;
+    }
+    if (down < 0 || down >= price) {
+      err.textContent = 'The down payment must be $0 or more and lower than the car price.';
+      err.classList.add('show');
+      return;
+    }
+    err.classList.remove('show');
+    $('dDownPct').textContent = Math.round(down / price * 100) + '% of the car price';
+
+    var loan = price - down;
+    var pmt = payment(loan, apr, months, 0);
+    var paid = pmt * months;
+    var interest = paid - loan;
+
+    $('dMonthly').textContent = money(pmt);
+    $('dRate').textContent = apr.toFixed(2) + '%';
+    $('dFinanced').textContent = money(loan);
+    $('dInterest').textContent = money(Math.max(interest, 0));
+    $('dPaid').textContent = money(paid);
+    $('dTotalCost').textContent = money(paid + down);
+    $('dNoDown').textContent = money(payment(price, apr, months, 0));
+
+    /* Down payment table: 0%, 10%, 20%, 30% of the price */
+    var zeroInterest = payment(price, apr, months, 0) * months - price;
+    var selectedPct = Math.round(down / price * 100);
+    $('dDownBody').innerHTML = [0, 10, 20, 30].map(function (pct) {
+      var d = price * pct / 100;
+      var l = price - d;
+      var p = payment(l, apr, months, 0);
+      var i = p * months - l;
+      var saved = zeroInterest - i;
+      return '<tr' + (pct === selectedPct ? ' class="selected"' : '') + '>' +
+        '<td>' + pct + '% (' + money0(d) + ')</td>' +
+        '<td>' + money0(l) + '</td>' +
+        '<td>' + money(p) + '</td>' +
+        '<td>' + money0(i) + '</td>' +
+        '<td>' + (saved > 0.5 ? money0(saved) : '-') + '</td>' +
+        '</tr>';
+    }).join('');
+
+    /* Credit score table: same financed amount and term */
+    var rows = TIERS.map(function (t) {
+      var p = payment(loan, t.apr, months, 0);
+      return { t: t, p: p, i: p * months - loan };
+    });
+    var bestInterest = rows[0].i;
+    var selected = $('dTier').value;
+    $('dTierBody').innerHTML = rows.map(function (row) {
+      var extra = row.i - bestInterest;
+      return '<tr' + (row.t.id === selected ? ' class="selected"' : '') + '>' +
+        '<td>' + row.t.label + '</td>' +
+        '<td>' + row.t.apr.toFixed(1) + '%</td>' +
+        '<td>' + money(row.p) + '</td>' +
+        '<td>' + money0(row.i) + '</td>' +
+        '<td>' + (extra > 0 ? '+' + money0(extra) : '-') + '</td>' +
+        '</tr>';
+    }).join('');
+  }
+
+  bindTier('tier', 'apr', calculate);
   ['price', 'residual', 'term'].forEach(function (id) {
     $(id).addEventListener('input', calculate);
   });
 
-  buildTierSelect();
+  bindTier('dTier', 'dApr', calculateDown);
+  ['dPrice', 'dDown', 'dTerm'].forEach(function (id) {
+    $(id).addEventListener('input', calculateDown);
+  });
+
   calculate();
+  calculateDown();
 </script>
 
 </body>
