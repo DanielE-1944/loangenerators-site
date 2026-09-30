@@ -62,6 +62,21 @@ h1 em{font-style:italic;color:var(--green)}
 .sched-row:last-child{border:none}
 .sched-row span:last-child{font-weight:600;color:var(--navy)}
 
+/* LOAN INPUT SCREEN (login_activity) */
+.app-phone-screen.form-screen{height:470px;min-height:470px}
+.form-scroll{overflow-y:auto;flex:1;padding:12px 14px 16px;scrollbar-width:thin}
+.lg-btn-main{display:block;text-align:center;border:1.5px solid var(--green-dark);color:var(--green-dark);font-weight:700;font-size:12px;padding:9px 6px;border-radius:8px;margin-bottom:12px}
+.lg-input{border-bottom:1.5px solid var(--border);color:var(--muted);font-size:12px;padding:6px 2px;margin:8px 10px 6px}
+.lg-set{display:block;background:#e6eaef;color:var(--navy);font-size:11px;padding:8px 10px;border-radius:6px;margin-bottom:6px}
+.lg-value{font-size:12px;font-weight:700;color:var(--navy);margin:0 0 8px 28px;min-height:14px}
+.lg-section{font-size:12px;font-weight:700;color:var(--green-dark);margin:14px 0 6px;letter-spacing:.3px}
+.lg-picker{display:flex;justify-content:center;gap:6px;margin:8px 0}
+.lg-picker div{text-align:center;font-size:11px;color:#9aa8b8;line-height:1.7;width:52px}
+.lg-picker div b{display:block;color:var(--navy);font-size:13px;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.lg-spinner{display:flex;justify-content:space-between;align-items:center;border-bottom:1.5px solid var(--border);font-size:12px;color:var(--navy);padding:8px 2px;margin:8px 0 6px}
+.lg-spinner::after{content:"\25BE";color:var(--muted)}
+.lg-confirm{display:block;text-align:center;background:#e6eaef;color:var(--green-dark);font-weight:700;font-size:12px;padding:10px 6px;border-radius:6px;margin-top:18px}
+
 /* LOGOS */
 .logos{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:24px 44px;text-align:center}
 .logos p{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:16px;font-weight:700}
@@ -206,7 +221,7 @@ footer{padding:24px 20px;flex-direction:column;text-align:center}
 
 <!-- THUMBNAIL -->
 <div class="thumb-strip">
-<img src="/repayment-schedule.png" alt="Repayment schedule screenshot" onclick="openLightbox()" />
+<img src="repayment-schedule.png" alt="Repayment schedule screenshot" onclick="openLightbox()" />
 <p>Tap to see the full repayment schedule</p>
 </div>
 
@@ -214,7 +229,7 @@ footer{padding:24px 20px;flex-direction:column;text-align:center}
 <div class="lightbox-overlay" id="lightbox">
 <button class="lightbox-close" type="button" onclick="closeLightbox(event)" aria-label="Close image">&times; </button>
 <div class="lightbox-image-container" id="imageContainer">
-<img id="lightboxImage" src="/repayment-schedule.png" alt="Repayment schedule screenshot, full size" />
+<img id="lightboxImage" src="repayment-schedule.png" alt="Repayment schedule screenshot, full size" />
 </div>
 <div class="image-controls">
 <button type="button" class="image-control-btn" onclick="changeImageSize(-0.15)" aria-label="Make image smaller">&minus;</button>
@@ -405,6 +420,65 @@ after you install it from Google Play.
 </div>
 
 <div class="hero-app-showcase">
+
+<!-- SCREEN 0: LOAN INPUT (from login_activity.xml) -->
+<div class="app-phone">
+<div class="app-phone-screen form-screen">
+<div class="screen-top">
+<div style="font-size:11px;opacity:.8">LoanGenerators</div>
+<div class="screen-title">Loan Inputs</div>
+</div>
+<div class="form-scroll">
+
+<div class="lg-btn-main">Loan Payment Calculator</div>
+
+<div class="lg-input">loan amount taken</div>
+<div class="lg-set">Set Loan Amount taken</div>
+<div class="lg-value"></div>
+
+<div class="lg-picker">
+<div>Aug<b>Sep</b>Oct</div>
+<div>29<b>30</b>1</div>
+<div>2025<b>2026</b>2027</div>
+</div>
+<div class="lg-set">Set the loan start date</div>
+<div class="lg-value"></div>
+
+<div class="lg-section">REFUNDS PARAMETERS:</div>
+
+<div class="lg-picker">
+<div>Sep<b>Oct</b>Nov</div>
+<div>30<b>1</b>2</div>
+<div>2025<b>2026</b>2027</div>
+</div>
+<div class="lg-set">Set refunds start date</div>
+<div class="lg-value"></div>
+
+<div class="lg-spinner">Monthly</div>
+<div class="lg-set">Set refund periods type</div>
+<div class="lg-value"></div>
+
+<div class="lg-input">refunds payment<br>frequencies</div>
+<div class="lg-set">Set refunds frequencies</div>
+<div class="lg-value"></div>
+
+<div class="lg-input">number of refund<br>payments</div>
+<div class="lg-set">Set number of refunds</div>
+<div class="lg-value"></div>
+
+<div class="lg-spinner">No indexation</div>
+<div class="lg-set">Set refund indexation type</div>
+<div class="lg-value"></div>
+
+<div class="lg-input">interest payment<br>rate</div>
+<div class="lg-set">Set interest rate</div>
+<div class="lg-value"></div>
+
+<div class="lg-confirm">CONFIRMATION</div>
+
+</div>
+</div>
+</div>
 
 <!-- SCREEN 1 -->
 <div class="app-phone">
@@ -665,19 +739,19 @@ worked example and a breakdown of what actually moves your payment.
 </p>
 <div class="calc-grid">
 
-<a href="/car-loan-calculator.html" class="calc-card">
+<a href="car-loan-calculator.html" class="calc-card">
 <h3>Car loan calculator: residual payment, down payment &amp; credit score</h3>
 <p>See how a residual (balloon) payment, a down payment and your credit score change your monthly payment and total interest on a car loan.</p>
 <span class="calc-link">Calculate your car loan &rarr;</span>
 </a>
 
-<a href="/mortgage-calculator.html" class="calc-card">
+<a href="mortgage-calculator.html" class="calc-card">
 <h3>Mortgage calculator with PMI</h3>
 <p>Estimate your monthly mortgage payment, see how PMI affects it, and find out when you can have it removed.</p>
 <span class="calc-link">Calculate your mortgage &rarr;</span>
 </a>
 
-<a href="/personal-loan-calculator.html" class="calc-card">
+<a href="personal-loan-calculator.html" class="calc-card">
 <h3>Personal loan monthly payment calculator</h3>
 <p>Compare secured vs. unsecured personal loans and see your exact monthly payment before you apply.</p>
 <span class="calc-link">Calculate your personal loan &rarr;</span>
@@ -705,9 +779,9 @@ worked example and a breakdown of what actually moves your payment.
 <a href="privacy.html">Privacy</a>
 <a href="#">Terms</a>
 <a href="#">Support</a>
-<a href="/car-loan-calculator.html">Car Loan Calculator</a>
-<a href="/mortgage-calculator.html">Mortgage Calculator</a>
-<a href="/personal-loan-calculator.html">Personal Loan Calculator</a>
+<a href="car-loan-calculator.html">Car Loan Calculator</a>
+<a href="mortgage-calculator.html">Mortgage Calculator</a>
+<a href="personal-loan-calculator.html">Personal Loan Calculator</a>
 <a href="https://play.google.com/store/apps/details?id=com.loan.generator" target="_blank">Download App</a>
 </div>
 <p>© 2026 LoanGenerators. All rights reserved.</p>
